@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Transcriber - Oracle VM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        body { 
+            padding-top: 20px; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .card-header {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 15px 15px 0 0 !important;
+        }
+        .progress-container { margin: 20px 0; }
+        #transcription-result, #summary-result {
+            height: 400px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-y: auto;
+            border-radius: 10px;
+        }
+        .api-error {
+            display: none;
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 10px;
+            color: #721c24;
+        }
+        .btn-primary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border: none;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(45deg, #5a67d8, #6b4199);
+        }
+        .server-status {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            background: rgba(255,255,255,0.9);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #4caf50;
+            border-radius: 50%;
+            margin-right: 5px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 10px;
+            margin-left: 5px;
+            font-weight: bold;
+        }
+        .badge-new { background: #4caf50; color: white; }
+        .badge-pro { background: #ff9800; color: white; }
+        .badge-fast { background: #2196f3; color: white; }
+        .badge-audio { background: #9c27b0; color: white; }
+        .badge-image { background: #e91e63; color: white; }
+        .badge-live { background: #f44336; color: white; }
+        
+        select option:disabled {
+            font-weight: bold;
+            color: #999;
+            background: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+<!-- Google Sheets Button Section -->
+<div style="position: fixed; top: 20px; left: 20px; z-index: 9998;">
+    <a href="https://docs.google.com/spreadsheets/d/1x5Srd28dGdKlpn_NO3cIN_nzh3mV2ItU5D3ErzhvqYU" 
+       target="_blank" 
+       class="btn btn-success shadow-lg"
+       style="
+        background: linear-gradient(135deg, #0f9d58 0%, #4285f4 100%);
+        border: none;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 500;
+        border-radius: 25px;
+        text-decoration: none;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(15, 157, 88, 0.3);"
+       onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 20px rgba(15, 157, 88, 0.4)'"
+       onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 15px rgba(15, 157, 88, 0.3)'">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="3" y1="9" x2="21" y2="9"></line>
+            <line x1="3" y1="15" x2="21" y2="15"></line>
+            <line x1="9" y1="9" x2="9" y2="21"></line>
+            <line x1="15" y1="9" x2="15" y2="21"></line>
+        </svg>
+        <span>Google Sheets</span>
+    </a>
+</div>
+
+<!-- Info Tooltip for Google Sheets -->
+<div id="sheets-tooltip" style="
+    position: fixed;
+    top: 70px;
+    left: 20px;
+    background: white;
+    border-radius: 8px;
+    padding: 10px 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    font-size: 12px;
+    color: #666;
+    display: none;
+    z-index: 9997;
+    max-width: 250px;">
+    <div style="font-weight: 600; color: #0f9d58; margin-bottom: 5px;">
+        📊 История транскрибаций
+    </div>
+    <div>Все обработанные видео автоматически сохраняются в эту таблицу</div>
+    <div style="margin-top: 5px; font-size: 11px; color: #999;">
+        ID: 1x5Srd28dGdKlpn_NO3cIN_nzh3mV2ItU5D3ErzhvqYU
+    </div>
+</div>
+
+<script>
+// Google Sheets button hover effect
+document.addEventListener('DOMContentLoaded', function() {
+    const sheetsBtn = document.querySelector('a[href*="docs.google.com/spreadsheets"]');
+    const tooltip = document.getElementById('sheets-tooltip');
+    let tooltipTimeout;
+    
+    if (sheetsBtn && tooltip) {
+        sheetsBtn.addEventListener('mouseenter', function() {
+            tooltipTimeout = setTimeout(() => {
+                tooltip.style.display = 'block';
+                tooltip.style.animation = 'fadeIn 0.3s ease';
+            }, 500);
+        });
+        
+        sheetsBtn.addEventListener('mouseleave', function() {
+            clearTimeout(tooltipTimeout);
+            tooltip.style.display = 'none';
+        });
+    }
+});
+
+// Add animation
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-5px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes pulse {
+        0% { box-shadow: 0 4px 15px rgba(15, 157, 88, 0.3); }
+        50% { box-shadow: 0 4px 20px rgba(15, 157, 88, 0.5); }
+        100% { box-shadow: 0 4px 15px rgba(15, 157, 88, 0.3); }
+    }
+    
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+        #sheets-tooltip {
+            display: none !important;
+        }
+        
+        a[href*="docs.google.com/spreadsheets"] {
+            top: auto !important;
+            bottom: 80px !important;
+            left: 15px !important;
+            font-size: 12px !important;
+            padding: 8px 16px !important;
+        }
+        
+        a[href*="docs.google.com/spreadsheets"] span {
+            display: none;
+        }
+        
+        a[href*="docs.google.com/spreadsheets"]:after {
+            content: "📊";
+            font-size: 20px;
+        }
+    }
+`;
+document.head.appendChild(style);
+</script>
+
+    <div class="server-status">
+        <span class="status-dot"></span>
+        Oracle VM Active
+    </div>
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h2 class="mb-0">
+                            <i class="bi bi-camera-video"></i> TikTok Transcriber
+                        </h2>
+                        <span class="badge bg-light text-dark">Powered by Gemini 2.5</span>
+                    </div>
+                    <div class="card-body">
+                        <div id="api-error" class="api-error">
+                            <strong>Ошибка:</strong> <span id="error-message"></span>
+                        </div>
+                        
+                        <form id="transcribe-form">
+                            <div class="mb-3">
+                                <label for="video-url" class="form-label">
+                                    <i class="bi bi-link-45deg"></i> URL видео
+                                </label>
+                                <input type="text" class="form-control" id="video-url" 
+                                    placeholder="https://www.tiktok.com/@username/video/... или YouTube, Instagram, Facebook" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="api-key" class="form-label">
+                                    <i class="bi bi-key"></i> API ключ Google Gemini
+                                </label>
+                                <input type="password" class="form-control" id="api-key" placeholder="Введите ваш API ключ">
+                                <div class="form-text">
+                                    Получите бесплатный ключ на 
+                                    <a href="https://ai.google.dev/" target="_blank">Google AI Studio</a>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="mb-3">
+                                        <label for="model-select" class="form-label">
+                                            <i class="bi bi-cpu"></i> Модель
+                                        </label>
+                                        <select class="form-select" id="model-select">
+                                            <optgroup label="🚀 Gemini 2.5 Series (Новейшие)">
+                                                <option value="gemini-2.5-pro">Gemini 2.5 Pro - Продвинутое мышление</option>
+                                                <option value="gemini-2.5-flash" selected>Gemini 2.5 Flash - Быстрая и умная</option>
+                                                <option value="gemini-2.5-flash-lite">Gemini 2.5 Flash-Lite - Самая экономичная</option>
+                                            </optgroup>
+                                            
+                                            <optgroup label="🎙️ С поддержкой аудио">
+                                                <option value="gemini-2.5-flash-preview-native-audio-dialog">Gemini 2.5 Native Audio - Диалоги</option>
+                                                <option value="gemini-2.5-flash-exp-native-audio-thinking-dialog">Gemini 2.5 Native Audio - С размышлениями</option>
+                                                <option value="gemini-live-2.5-flash-preview">Gemini 2.5 Live - Интерактивная</option>
+                                            </optgroup>
+                                            
+                                            <optgroup label="🎨 Специальные">
+                                                <option value="gemini-2.5-flash-image-preview">Gemini 2.5 Image - Генерация изображений</option>
+                                                <option value="gemini-2.5-flash-preview-tts">Gemini 2.5 TTS Flash - Синтез речи</option>
+                                                <option value="gemini-2.5-pro-preview-tts">Gemini 2.5 TTS Pro - Премиум синтез</option>
+                                            </optgroup>
+                                            
+                                            <optgroup label="⚡ Gemini 2.0 Series">
+                                                <option value="gemini-2.0-flash">Gemini 2.0 Flash - Стриминг</option>
+                                                <option value="gemini-2.0-flash-lite">Gemini 2.0 Flash-Lite - Низкая задержка</option>
+                                                <option value="gemini-2.0-flash-live-001">Gemini 2.0 Live - Видео взаимодействие</option>
+                                                <option value="gemini-2.0-flash-preview-image-generation">Gemini 2.0 Image Gen - Создание картинок</option>
+                                            </optgroup>
+                                            
+                                            <optgroup label="🔧 Классические">
+                                                <option value="gemini-1.5-flash">Gemini 1.5 Flash</option>
+                                                <option value="gemini-1.5-pro">Gemini 1.5 Pro</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label for="lang-select" class="form-label">
+                                            <i class="bi bi-translate"></i> Язык
+                                        </label>
+                                        <select class="form-select" id="lang-select">
+                                            <option value="ru">🇷🇺 Русский</option>
+                                            <option value="en">🇬🇧 English</option>
+                                            <option value="auto">🌐 Авто</option>
+                                            <option value="es">🇪🇸 Español</option>
+                                            <option value="fr">🇫🇷 Français</option>
+                                            <option value="de">🇩🇪 Deutsch</option>
+                                            <option value="zh">🇨🇳 中文</option>
+                                            <option value="ja">🇯🇵 日本語</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="bi bi-play-circle"></i> Начать транскрибацию
+                            </button>
+                        </form>
+                        
+                        <div id="progress-container" style="margin: 20px 0; display: none;">
+                            <div class="progress">
+                                <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" 
+                                    role="progressbar" style="width: 0%"></div>
+                            </div>
+                            <div id="progress-text" class="text-center mt-2">Подготовка...</div>
+                        </div>
+                        
+                        <div id="result-container" style="margin-top: 20px; display: none;">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <h5><i class="bi bi-text-left"></i> Транскрипция</h5>
+                                        <button class="btn btn-sm btn-outline-secondary" onclick="copyText('transcription-result')">
+                                            <i class="bi bi-clipboard"></i>
+                                        </button>
+                                    </div>
+                                    <textarea class="form-control" id="transcription-result" readonly></textarea>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <h5><i class="bi bi-card-text"></i> Краткое содержание</h5>
+                                        <button class="btn btn-sm btn-outline-secondary" onclick="copyText('summary-result')">
+                                            <i class="bi bi-clipboard"></i>
+                                        </button>
+                                    </div>
+                                    <textarea class="form-control" id="summary-result" readonly></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center mt-3">
+                                <button id="download-audio-btn" class="btn btn-success" style="display: none;">
+                                    <i class="bi bi-download"></i> Скачать аудио
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-info mt-3" role="alert">
+                            <i class="bi bi-info-circle"></i>
+                            <strong>Совет:</strong> Используйте Gemini 2.5 Flash для быстрой обработки или Gemini 2.5 Pro для максимальной точности.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const baseURL = window.location.origin;
+        let currentAudioId = null;
+        
+        // Загружаем сохраненный API ключ
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedKey = localStorage.getItem('gemini-api-key');
+            if (savedKey) {
+                document.getElementById('api-key').value = savedKey;
+            }
+        });
+        
+        // Обработчик формы
+        document.getElementById('transcribe-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const videoUrl = document.getElementById('video-url').value;
+            const apiKey = document.getElementById('api-key').value;
+            const model = document.getElementById('model-select').value;
+            const language = document.getElementById('lang-select').value;
+            
+            if (!videoUrl || !apiKey) {
+                showError('Заполните все поля');
+                return;
+            }
+            
+            // Сохраняем API ключ
+            localStorage.setItem('gemini-api-key', apiKey);
+            
+            // Скрываем ошибки и результаты
+            document.getElementById('api-error').style.display = 'none';
+            document.getElementById('result-container').style.display = 'none';
+            
+            // Показываем прогресс
+            const progressContainer = document.getElementById('progress-container');
+            const progressBar = document.getElementById('progress-bar');
+            const progressText = document.getElementById('progress-text');
+            const submitBtn = document.querySelector('button[type="submit"]');
+            
+            submitBtn.disabled = true;
+            progressContainer.style.display = 'block';
+            progressBar.style.width = '10%';
+            progressText.textContent = 'Подключение к серверу...';
+            
+            // Имитация прогресса
+            const progressInterval = setInterval(() => {
+                const current = parseInt(progressBar.style.width);
+                if (current < 90) {
+                    progressBar.style.width = (current + 10) + '%';
+                    if (current < 30) {
+                        progressText.textContent = 'Загрузка видео...';
+                    } else if (current < 60) {
+                        progressText.textContent = 'Извлечение аудио...';
+                    } else {
+                        progressText.textContent = 'Транскрибация с ' + model + '...';
+                    }
+                }
+            }, 2000);
+            
+            try {
+                const response = await fetch(`${baseURL}/process`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        video_url: videoUrl,
+                        save_to_sheets: true,
+                        api_key: apiKey,
+                        model: model,
+                        language: language
+                    })
+                });
+                
+                clearInterval(progressInterval);
+                progressBar.style.width = '100%';
+                progressText.textContent = 'Готово!';
+                
+                const data = await response.json();
+                
+                if (data.status === 'error') {
+                    throw new Error(data.message);
+                }
+                
+                // Показываем результаты
+                setTimeout(() => {
+                    progressContainer.style.display = 'none';
+                    displayResults(data);
+                    // Show Google Sheets info if saved
+                    if (data.google_sheets && data.google_sheets.saved) {
+                        showSheetsInfo(data.google_sheets);
+                    }
+                }, 1000);
+                
+            } catch (error) {
+                clearInterval(progressInterval);
+                progressContainer.style.display = 'none';
+                showError(error.message);
+            } finally {
+                submitBtn.disabled = false;
+            }
+        });
+        
+        function displayResults(data) {
+            document.getElementById('result-container').style.display = 'block';
+            document.getElementById('transcription-result').value = data.transcript || 'Нет данных';
+            document.getElementById('summary-result').value = data.summary || 'Нет данных';
+            
+            if (data.audio_id) {
+                currentAudioId = data.audio_id;
+                const btn = document.getElementById('download-audio-btn');
+                btn.style.display = 'inline-block';
+                btn.onclick = () => downloadAudio(data.audio_id);
+            }
+        }
+        
+        function downloadAudio(audioId) {
+            window.open(`${baseURL}/download-audio/${audioId}`, '_blank');
+        }
+        
+        function copyText(elementId) {
+            const element = document.getElementById(elementId);
+            element.select();
+            document.execCommand('copy');
+            
+            // Визуальная обратная связь
+            const btn = event.target.closest('button');
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="bi bi-check"></i>';
+            setTimeout(() => btn.innerHTML = originalHTML, 2000);
+        }
+        
+        function showError(message) {
+            document.getElementById('api-error').style.display = 'block';
+            document.getElementById('error-message').textContent = message;
+        }
+    </script>
+<!-- Admin Panel -->
+<!-- Universal Admin Panel -->
+<div id="admin-control" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
+    <!-- FAB Button -->
+    <button id="admin-fab" style="
+        width: 56px; 
+        height: 56px; 
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none;
+        border-radius: 50%; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        color: white;
+        font-size: 24px;">
+        <i class="bi bi-gear-fill"></i>
+    </button>
+    
+    <!-- Admin Menu -->
+    <div id="admin-menu" style="
+        position: absolute;
+        bottom: 70px;
+        right: 0;
+        background: white;
+        border-radius: 12px;
+        padding: 15px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        display: none;
+        min-width: 220px;">
+        
+        <div style="text-align: center; margin-bottom: 10px;">
+            <small style="color: #666;">Панель управления</small>
+            <div id="service-badge" class="badge bg-success" style="display: block; margin-top: 5px;">Online</div>
+        </div>
+        
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+            <button id="btn-restart" class="btn btn-warning btn-sm" style="width: 100%;">
+                <i class="bi bi-arrow-clockwise"></i> Перезагрузить
+            </button>
+            
+            <button id="btn-status" class="btn btn-info btn-sm" style="width: 100%;">
+                <i class="bi bi-info-circle"></i> Статус
+            </button>
+            
+            <button id="btn-clear" class="btn btn-secondary btn-sm" style="width: 100%;">
+                <i class="bi bi-trash"></i> Очистить кэш
+            </button>
+        </div>
+        
+        <div id="admin-msg" style="margin-top: 10px; display: none;">
+            <div class="alert alert-sm p-2 mb-0" style="font-size: 12px;"></div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Admin Panel Styles */
+#admin-fab:hover {
+    transform: scale(1.1);
+}
+
+#admin-fab:active {
+    transform: scale(0.95);
+}
+
+#admin-menu.show {
+    display: block !important;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile specific */
+@media (max-width: 768px) {
+    #admin-control {
+        bottom: 15px !important;
+        right: 15px !important;
+    }
+    
+    #admin-menu {
+        right: 0 !important;
+        left: auto !important;
+        max-width: calc(100vw - 30px);
+        width: 250px;
+    }
+    
+    .btn-sm {
+        padding: 10px !important;
+        font-size: 14px !important;
+    }
+}
+
+/* Rotate animation */
+.rotating {
+    animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+</style>
+
+<script>
+// Admin Panel JavaScript
+(function() {
+    let menuOpen = false;
+    let isProcessing = false;
+    
+    // Wait for DOM to load
+    document.addEventListener('DOMContentLoaded', function() {
+        const fab = document.getElementById('admin-fab');
+        const menu = document.getElementById('admin-menu');
+        const btnRestart = document.getElementById('btn-restart');
+        const btnStatus = document.getElementById('btn-status');
+        const btnClear = document.getElementById('btn-clear');
+        
+        // Toggle menu on FAB click
+        if (fab) {
+            fab.addEventListener('click', function(e) {
+                e.stopPropagation();
+                menuOpen = !menuOpen;
+                
+                if (menuOpen) {
+                    menu.classList.add('show');
+                    checkServiceStatus();
+                } else {
+                    menu.classList.remove('show');
+                }
+            });
+        }
+        
+        // Restart button
+        if (btnRestart) {
+            btnRestart.addEventListener('click', async function(e) {
+                e.stopPropagation();
+                
+                if (isProcessing) return;
+                
+                if (!confirm('Перезагрузить сервис TikTok Transcriber?')) {
+                    return;
+                }
+                
+                isProcessing = true;
+                showMessage('Перезагрузка...', 'warning');
+                
+                // Add rotating animation to gear icon
+                const icon = fab.querySelector('i');
+                icon.classList.add('rotating');
+                
+                try {
+                    const response = await fetch('/admin/restart', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+                    
+                    // Even if response fails, service might restart
+                    showMessage('✅ Перезагружено!', 'success');
+                    
+                    setTimeout(() => {
+                        location.reload();
+                    }, 2000);
+                    
+                } catch (error) {
+                    // Service probably restarted, which breaks connection
+                    showMessage('✅ Перезагрузка...', 'success');
+                    setTimeout(() => {
+                        location.reload();
+                    }, 2000);
+                } finally {
+                    isProcessing = false;
+                    icon.classList.remove('rotating');
+                }
+            });
+        }
+        
+        // Status button
+        if (btnStatus) {
+            btnStatus.addEventListener('click', function(e) {
+                e.stopPropagation();
+                checkServiceStatus();
+            });
+        }
+        
+        // Clear cache button
+        if (btnClear) {
+            btnClear.addEventListener('click', function(e) {
+                e.stopPropagation();
+                clearBrowserCache();
+            });
+        }
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (menuOpen && !menu.contains(e.target) && e.target !== fab) {
+                menu.classList.remove('show');
+                menuOpen = false;
+            }
+        });
+        
+        // Prevent menu close when clicking inside menu
+        if (menu) {
+            menu.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
+    });
+    
+    // Check service status
+    async function checkServiceStatus() {
+        try {
+            const response = await fetch('/admin/status');
+            
+            if (response.ok) {
+                const data = await response.json();
+                const badge = document.getElementById('service-badge');
+                
+                if (data.status === 'success') {
+                    badge.className = 'badge bg-success';
+                    badge.textContent = 'Online';
+                    showMessage('✅ Сервис работает', 'success');
+                } else {
+                    badge.className = 'badge bg-danger';
+                    badge.textContent = 'Offline';
+                }
+            }
+        } catch (error) {
+            const badge = document.getElementById('service-badge');
+            badge.className = 'badge bg-warning';
+            badge.textContent = 'Unknown';
+            showMessage('⚠️ Не удалось проверить статус', 'warning');
+        }
+    }
+    
+    // Clear browser cache
+    function clearBrowserCache() {
+        // Clear caches
+        if ('caches' in window) {
+            caches.keys().then(names => {
+                names.forEach(name => caches.delete(name));
+            });
+        }
+        
+        // Clear storage
+        try {
+            localStorage.clear();
+            sessionStorage.clear();
+        } catch(e) {
+            console.log('Storage clear error:', e);
+        }
+        
+        showMessage('✅ Кэш очищен!', 'success');
+        
+        setTimeout(() => {
+            location.reload(true);
+        }, 1500);
+    }
+    
+    // Show message
+    function showMessage(text, type) {
+        const msgDiv = document.getElementById('admin-msg');
+        if (!msgDiv) return;
+        
+        const alertDiv = msgDiv.querySelector('.alert');
+        if (!alertDiv) return;
+        
+        alertDiv.className = `alert alert-${type} alert-sm p-2 mb-0`;
+        alertDiv.textContent = text;
+        alertDiv.style.fontSize = '12px';
+        msgDiv.style.display = 'block';
+        
+        setTimeout(() => {
+            msgDiv.style.display = 'none';
+        }, 3000);
+    }
+    
+    // Auto-check status on load
+    setTimeout(checkServiceStatus, 2000);
+})();
+</script>
+
+</body></html>
+<!-- Mobile Debug Version -->
+<script>
+// Add touch event support for mobile
+document.addEventListener('DOMContentLoaded', function() {
+    const fab = document.getElementById('admin-fab');
+    const menu = document.getElementById('admin-menu');
+    
+    if (!fab || !menu) {
+        console.error('Admin elements not found!');
+        return;
+    }
+    
+    // Debug info
+    console.log('Admin panel initialized');
+    
+    // Add both click and touch events
+    fab.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Touch detected');
+        toggleAdminMenu();
+    }, {passive: false});
+    
+    fab.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Click detected');
+        toggleAdminMenu();
+    });
+    
+    let menuOpen = false;
+    
+    function toggleAdminMenu() {
+        menuOpen = !menuOpen;
+        console.log('Menu state:', menuOpen);
+        
+        if (menuOpen) {
+            menu.style.display = 'block';
+            menu.classList.add('show');
+            // Add visual feedback
+            fab.style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                fab.style.transform = 'scale(1)';
+            }, 100);
+        } else {
+            menu.style.display = 'none';
+            menu.classList.remove('show');
+        }
+    }
+    
+    // Add visual feedback on touch
+    fab.addEventListener('touchstart', function() {
+        this.style.transform = 'scale(0.9)';
+    });
+    
+    fab.addEventListener('touchend', function() {
+        this.style.transform = 'scale(1)';
+    });
+    
+    // Test alert on mobile
+    window.testAdmin = function() {
+        alert('Admin panel is working!');
+        toggleAdminMenu();
+    };
+});
+</script>
+
+
+<!-- Test Button for Mobile -->
+<div style="position: fixed; top: 20px; right: 20px; z-index: 10000;">
+    <button onclick="alert('Button works!'); location.reload();" style="
+        background: orange;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    ">Test Reload</button>
+</div>
+
+<script>
+// Google Sheets Results Indicator
+document.addEventListener('DOMContentLoaded', function() {
+    // Override displayResults to add Google Sheets indicator
+    const originalDisplayResults = window.displayResults;
+    if (typeof originalDisplayResults === 'function') {
+        window.displayResults = function(data) {
+            // Call original function
+            if (originalDisplayResults) {
+                originalDisplayResults.call(this, data);
+            }
+            
+            // Add Google Sheets save indicator
+            setTimeout(() => {
+                const resultContainer = document.getElementById('result-container');
+                if (resultContainer && resultContainer.style.display !== 'none') {
+                    // Check if indicator doesn't exist
+                    if (!document.getElementById('sheets-indicator')) {
+                        const indicator = document.createElement('div');
+                        indicator.id = 'sheets-indicator';
+                        indicator.className = 'alert alert-info mt-3';
+                        indicator.innerHTML = `
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <i class="bi bi-cloud-check-fill"></i>
+                                    <strong> Сохранено в облаке!</strong>
+                                    <div class="small mt-1">Транскрибация автоматически сохранена в Google Sheets</div>
+                                </div>
+                                <a href="https://docs.google.com/spreadsheets/d/1x5Srd28dGdKlpn_NO3cIN_nzh3mV2ItU5D3ErzhvqYU" 
+                                   target="_blank" 
+                                   class="btn btn-outline-primary btn-sm">
+                                    <i class="bi bi-table"></i> Открыть историю
+                                </a>
+                            </div>
+                        `;
+                        resultContainer.appendChild(indicator);
+                    }
+                }
+            }, 100);
+        };
+    }
+});
+</script>

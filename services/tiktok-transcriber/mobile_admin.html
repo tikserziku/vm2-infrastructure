@@ -1,0 +1,251 @@
+<!-- Mobile-Optimized Admin Panel -->
+<div id="mobile-admin-panel" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
+    <!-- Floating Action Button (FAB) -->
+    <div id="fab-button" onclick="toggleMobilePanel()" style="
+        width: 56px; 
+        height: 56px; 
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 50%; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        cursor: pointer;
+        transition: transform 0.3s ease;">
+        <i class="bi bi-gear-fill" style="color: white; font-size: 24px;"></i>
+    </div>
+    
+    <!-- Admin Menu -->
+    <div id="admin-menu" style="
+        position: absolute;
+        bottom: 70px;
+        right: 0;
+        background: white;
+        border-radius: 12px;
+        padding: 10px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        display: none;
+        min-width: 200px;">
+        
+        <div style="text-align: center; margin-bottom: 10px;">
+            <small class="text-muted">Панель управления</small>
+            <div id="service-status" class="badge bg-success" style="display: block; margin-top: 5px;">Online</div>
+        </div>
+        
+        <div class="d-grid gap-2">
+            <button class="btn btn-warning btn-sm" onclick="mobileRestart()">
+                <i class="bi bi-arrow-clockwise"></i> Перезагрузить
+            </button>
+            
+            <button class="btn btn-info btn-sm" onclick="mobileCheckStatus()">
+                <i class="bi bi-info-circle"></i> Статус
+            </button>
+            
+            <button class="btn btn-secondary btn-sm" onclick="mobileClearCache()">
+                <i class="bi bi-trash"></i> Очистить кэш
+            </button>
+        </div>
+        
+        <div id="mobile-message" style="margin-top: 10px; display: none;">
+            <div class="alert alert-sm p-2 mb-0" style="font-size: 12px;"></div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    #mobile-admin-panel {
+        bottom: 15px !important;
+        right: 15px !important;
+    }
+    
+    #admin-menu {
+        right: 0 !important;
+        left: auto !important;
+        max-width: calc(100vw - 30px);
+        width: 250px;
+    }
+    
+    .btn-sm {
+        padding: 8px 12px !important;
+        font-size: 14px !important;
+    }
+    
+    /* Hide desktop version on mobile */
+    #admin-panel {
+        display: none !important;
+    }
+}
+
+/* Desktop - hide mobile version */
+@media (min-width: 769px) {
+    #mobile-admin-panel {
+        display: none !important;
+    }
+}
+
+/* Animations */
+#fab-button:hover {
+    transform: scale(1.1);
+}
+
+#fab-button:active {
+    transform: scale(0.95);
+}
+
+#admin-menu {
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Rotate gear icon when menu is open */
+#fab-button.active i {
+    animation: rotate 0.5s ease;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(180deg); }
+}
+</style>
+
+<script>
+// Mobile Admin Functions
+let mobileMenuOpen = false;
+
+function toggleMobilePanel() {
+    const menu = document.getElementById('admin-menu');
+    const fab = document.getElementById('fab-button');
+    
+    mobileMenuOpen = !mobileMenuOpen;
+    
+    if (mobileMenuOpen) {
+        menu.style.display = 'block';
+        fab.classList.add('active');
+        // Check status when opening
+        mobileCheckStatus();
+    } else {
+        menu.style.display = 'none';
+        fab.classList.remove('active');
+    }
+}
+
+async function mobileRestart() {
+    if (!confirm('Перезагрузить сервис TikTok Transcriber?')) {
+        return;
+    }
+    
+    showMobileMessage('Перезагрузка...', 'warning');
+    
+    try {
+        const response = await fetch('/admin/restart', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        
+        if (response.ok) {
+            showMobileMessage('✅ Перезагружено!', 'success');
+            setTimeout(() => {
+                location.reload();
+            }, 2000);
+        } else {
+            throw new Error('Failed to restart');
+        }
+    } catch (error) {
+        showMobileMessage('❌ Ошибка!', 'danger');
+        console.error('Restart error:', error);
+    }
+}
+
+async function mobileCheckStatus() {
+    try {
+        const response = await fetch('/admin/status');
+        
+        if (response.ok) {
+            const data = await response.json();
+            const statusBadge = document.getElementById('service-status');
+            
+            if (data.status === 'success') {
+                statusBadge.className = 'badge bg-success';
+                statusBadge.textContent = 'Online';
+                showMobileMessage('✅ Сервис работает', 'success');
+            } else {
+                statusBadge.className = 'badge bg-danger';
+                statusBadge.textContent = 'Offline';
+            }
+        }
+    } catch (error) {
+        document.getElementById('service-status').className = 'badge bg-warning';
+        document.getElementById('service-status').textContent = 'Unknown';
+    }
+}
+
+function mobileClearCache() {
+    // Clear caches
+    if ('caches' in window) {
+        caches.keys().then(names => {
+            names.forEach(name => caches.delete(name));
+        });
+    }
+    
+    // Clear storage
+    localStorage.clear();
+    sessionStorage.clear();
+    
+    showMobileMessage('✅ Кэш очищен!', 'success');
+    
+    setTimeout(() => {
+        location.reload(true);
+    }, 1500);
+}
+
+function showMobileMessage(message, type) {
+    const msgDiv = document.getElementById('mobile-message');
+    const alertDiv = msgDiv.querySelector('.alert');
+    
+    alertDiv.className = `alert alert-${type} alert-sm p-2 mb-0`;
+    alertDiv.textContent = message;
+    alertDiv.style.fontSize = '12px';
+    msgDiv.style.display = 'block';
+    
+    setTimeout(() => {
+        msgDiv.style.display = 'none';
+    }, 3000);
+}
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    const panel = document.getElementById('mobile-admin-panel');
+    if (!panel.contains(e.target) && mobileMenuOpen) {
+        toggleMobilePanel();
+    }
+});
+
+// Touch gesture support for mobile
+let touchStartY = 0;
+document.getElementById('fab-button').addEventListener('touchstart', (e) => {
+    touchStartY = e.touches[0].clientY;
+});
+
+document.getElementById('fab-button').addEventListener('touchend', (e) => {
+    const touchEndY = e.changedTouches[0].clientY;
+    if (Math.abs(touchEndY - touchStartY) < 10) {
+        // It's a tap, not a swipe
+        e.preventDefault();
+    }
+});
+</script>
+

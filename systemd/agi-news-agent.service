@@ -1,0 +1,14 @@
+[Unit]
+Description=AGI News Agent - Self-Learning System
+After=network.target
+
+[Service]
+Type=oneshot
+User=ubuntu
+WorkingDirectory=/home/ubuntu/agi-news-agent
+ExecStart=/usr/bin/python3 /home/ubuntu/agi-news-agent/main.py run
+StandardOutput=append:/home/ubuntu/agi-news-agent/logs/agent.log
+StandardError=append:/home/ubuntu/agi-news-agent/logs/agent.log
+
+[Install]
+WantedBy=multi-user.target

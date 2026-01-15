@@ -1,0 +1,204 @@
+<!-- Admin Panel HTML -->
+<div id="admin-panel" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
+    <div class="card shadow-lg" style="width: 300px; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);">
+        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+            <span><i class="bi bi-gear-fill"></i> Панель управления</span>
+            <button onclick="toggleAdminPanel()" class="btn btn-sm btn-link text-white p-0">
+                <i class="bi bi-chevron-down" id="admin-toggle-icon"></i>
+            </button>
+        </div>
+        <div class="card-body" id="admin-body">
+            <div class="mb-2">
+                <small class="text-muted">Статус сервиса:</small>
+                <div id="service-status" class="badge bg-success">Online</div>
+            </div>
+            
+            <div class="d-grid gap-2">
+                <button class="btn btn-warning btn-sm" onclick="restartService()">
+                    <i class="bi bi-arrow-clockwise"></i> Перезагрузить сервис
+                </button>
+                
+                <button class="btn btn-info btn-sm" onclick="checkStatus()">
+                    <i class="bi bi-info-circle"></i> Проверить статус
+                </button>
+                
+                <button class="btn btn-secondary btn-sm" onclick="clearCache()">
+                    <i class="bi bi-trash"></i> Очистить кэш
+                </button>
+            </div>
+            
+            <div id="admin-message" class="mt-2" style="display: none;">
+                <div class="alert alert-sm p-2 mb-0"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+#admin-panel {
+    transition: all 0.3s ease;
+}
+
+#admin-panel .card {
+    transition: transform 0.3s ease;
+}
+
+#admin-panel .card:hover {
+    transform: scale(1.02);
+}
+
+#admin-body {
+    max-height: 300px;
+    overflow-y: auto;
+    transition: max-height 0.3s ease;
+}
+
+#admin-body.collapsed {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+}
+
+.btn-sm {
+    font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+    #admin-panel {
+        bottom: 10px;
+        right: 10px;
+        left: 10px;
+    }
+    
+    #admin-panel .card {
+        width: 100% !important;
+    }
+}
+</style>
+
+<script>
+// Admin Panel Functions
+let adminPanelCollapsed = false;
+
+function toggleAdminPanel() {
+    const body = document.getElementById('admin-body');
+    const icon = document.getElementById('admin-toggle-icon');
+    
+    adminPanelCollapsed = !adminPanelCollapsed;
+    
+    if (adminPanelCollapsed) {
+        body.classList.add('collapsed');
+        icon.className = 'bi bi-chevron-up';
+    } else {
+        body.classList.remove('collapsed');
+        icon.className = 'bi bi-chevron-down';
+    }
+}
+
+async function restartService() {
+    if (!confirm('Вы уверены, что хотите перезагрузить сервис?')) {
+        return;
+    }
+    
+    showAdminMessage('Перезагрузка сервиса...', 'info');
+    
+    try {
+        const response = await fetch('/admin/restart', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        
+        const data = await response.json();
+        
+        if (data.status === 'success') {
+            showAdminMessage('✅ Сервис успешно перезагружен!', 'success');
+            setTimeout(() => {
+                checkStatus();
+            }, 3000);
+        } else {
+            showAdminMessage('❌ Ошибка: ' + data.message, 'danger');
+        }
+    } catch (error) {
+        showAdminMessage('❌ Ошибка сети: ' + error, 'danger');
+    }
+}
+
+async function checkStatus() {
+    try {
+        const response = await fetch('/admin/status');
+        const data = await response.json();
+        
+        if (data.status === 'success') {
+            const statusBadge = document.getElementById('service-status');
+            const serviceInfo = data.service;
+            
+            if (serviceInfo.status === 'online') {
+                statusBadge.className = 'badge bg-success';
+                statusBadge.textContent = `Online (${serviceInfo.uptime || 'N/A'})`;
+            } else {
+                statusBadge.className = 'badge bg-danger';
+                statusBadge.textContent = 'Offline';
+            }
+            
+            showAdminMessage(`Статус: ${serviceInfo.status}, Перезагрузок: ${serviceInfo.restarts || '0'}`, 'info');
+        }
+    } catch (error) {
+        document.getElementById('service-status').className = 'badge bg-warning';
+        document.getElementById('service-status').textContent = 'Unknown';
+    }
+}
+
+function clearCache() {
+    // Clear browser cache
+    if ('caches' in window) {
+        caches.keys().then(names => {
+            names.forEach(name => {
+                caches.delete(name);
+            });
+        });
+    }
+    
+    // Clear local storage
+    localStorage.clear();
+    sessionStorage.clear();
+    
+    showAdminMessage('✅ Кэш очищен!', 'success');
+    
+    // Reload page after 2 seconds
+    setTimeout(() => {
+        location.reload(true);
+    }, 2000);
+}
+
+function showAdminMessage(message, type) {
+    const msgDiv = document.getElementById('admin-message');
+    const alertDiv = msgDiv.querySelector('.alert');
+    
+    alertDiv.className = `alert alert-${type} alert-sm p-2 mb-0`;
+    alertDiv.textContent = message;
+    msgDiv.style.display = 'block';
+    
+    // Auto hide after 5 seconds
+    setTimeout(() => {
+        msgDiv.style.display = 'none';
+    }, 5000);
+}
+
+// Check status on load
+window.addEventListener('load', () => {
+    setTimeout(checkStatus, 1000);
+    
+    // Auto-check status every 30 seconds
+    setInterval(checkStatus, 30000);
+});
+
+// Keyboard shortcut for admin panel (Ctrl+Shift+A)
+document.addEventListener('keydown', (e) => {
+    if (e.ctrlKey && e.shiftKey && e.key === 'A') {
+        toggleAdminPanel();
+    }
+});
+</script>
+

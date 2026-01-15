@@ -1,0 +1,14 @@
+[Unit]
+Description=AGI News Agent - Alerts Web Dashboard
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/agi-news-agent
+ExecStart=/usr/bin/python3 /home/ubuntu/agi-news-agent/web/alerts_api.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

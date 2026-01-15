@@ -1,0 +1,1593 @@
+{
+  "tools": [
+    {
+      "id": 1,
+      "name": "NotebookLM",
+      "category": "speech",
+      "description": "Google - документы в подкасты",
+      "rating": 5,
+      "url": "https://notebooklm.google.com",
+      "tags": [
+        "Google",
+        "Подкасты",
+        "Бесплатно"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Claude Opus 4.5",
+      "category": "llm",
+      "description": "Топовая модель Anthropic",
+      "rating": 4.9,
+      "tags": [
+        "Anthropic",
+        "Reasoning",
+        "Premium"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Cursor 2.0",
+      "category": "dev",
+      "description": "AI IDE с агентами. $29B оценка",
+      "rating": 4.9,
+      "tags": [
+        "IDE",
+        "Агенты"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Runway Gen-4.5",
+      "category": "video",
+      "description": "Генерация видео. Elo 1247",
+      "rating": 5,
+      "tags": [
+        "Генерация",
+        "Видео"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "DeepSeek-V3.2",
+      "category": "llm",
+      "description": "685B параметров, открытая модель",
+      "rating": 4.7,
+      "tags": [
+        "Open Source",
+        "685B"
+      ]
+    }
+  ],
+  "news": [
+    {
+      "id": 1,
+      "title": "MIT: AI может заменить 11.7% работников США",
+      "text": "$1.2 трлн в зарплатах автоматизируемы",
+      "date": "2025-12-03"
+    },
+    {
+      "id": 2,
+      "title": "Cursor привлёк $2.3B при оценке $29.3B",
+      "text": "Крупнейший раунд для AI-инструмента",
+      "date": "2025-11-26"
+    },
+    {
+      "title": "Grok got crucial facts wrong about Bondi Beach shooting",
+      "text": "Grok, the chatbot built by Elon Musk’s xAI and popularized on his social media platform X, appears to have repeatedly spread misinformation about today’s mass shooting at Bondi Beach in Australia.",
+      "date": "2025-12-14",
+      "id": 1765792159165,
+      "createdAt": "2025-12-15T09:49:19.165Z"
+    },
+    {
+      "title": "AI data center boom could be bad news for other infrastructure projects",
+      "text": "Improvements to roads, bridges, and other infrastructure could take a hit as data center construction accelerates.",
+      "date": "2025-12-13",
+      "id": 1765792159169,
+      "createdAt": "2025-12-15T09:49:19.169Z"
+    },
+    {
+      "title": "Trump’s AI executive order promises &#8216;one rulebook&#8217; — startups may get legal limbo instead",
+      "text": "Trump signed an AI executive order targeting state laws and promising one national rulebook. Critics warn it could trigger court battles and prolong uncertainty for startups while Congress debates fed",
+      "date": "2025-12-12",
+      "id": 1765792159172,
+      "createdAt": "2025-12-15T09:49:19.172Z"
+    },
+    {
+      "title": "ChatGPT: Everything you need to know about the AI-powered chatbot",
+      "text": "A timeline of ChatGPT product updates and releases, starting with the latest, which we’ve been updating throughout the year.",
+      "date": "2025-12-12",
+      "id": 1765792159174,
+      "createdAt": "2025-12-15T09:49:19.174Z"
+    },
+    {
+      "title": "Google launched its deepest AI research agent yet — on the same day OpenAI dropped GPT-5.2",
+      "text": "For the first time, developers can embed Google's Deep Research tool, based on Gemini 3 Pro, into their own apps.",
+      "date": "2025-12-12",
+      "id": 1765792159177,
+      "createdAt": "2025-12-15T09:49:19.177Z"
+    },
+    {
+      "title": "OpenAI built an AI coding agent and uses it to improve the agent itself",
+      "text": "",
+      "date": "2025-12-12",
+      "id": 1765792159179,
+      "createdAt": "2025-12-15T09:49:19.179Z"
+    },
+    {
+      "title": "The Download: expanded carrier screening, and how Southeast Asia plans to get to space",
+      "text": "This is today&#8217;s edition of The Download, our weekday newsletter that provides a daily dose of what&#8217;s going on in the world of technology. Expanded carrier screening: Is it worth it? Carrie",
+      "date": "2025-12-12",
+      "id": 1765792159181,
+      "createdAt": "2025-12-15T09:49:19.181Z"
+    },
+    {
+      "title": "Southeast Asia seeks its place in space",
+      "text": "It’s a scorching October day in Bangkok and I’m wandering through the exhibits at the Thai Space Expo, held in one of the city’s busiest shopping malls, when I do a double take. Amid the flashy space ",
+      "date": "2025-12-12",
+      "id": 1765792159184,
+      "createdAt": "2025-12-15T09:49:19.184Z"
+    },
+    {
+      "title": "Expanded carrier screening: Is it worth it?",
+      "text": "This week I’ve been thinking about babies. Healthy ones. Perfect ones. As you may have read last week, my colleague Antonio Regalado came face to face with a marketing campaign in the New York subway ",
+      "date": "2025-12-12",
+      "id": 1765792159186,
+      "createdAt": "2025-12-15T09:49:19.186Z"
+    },
+    {
+      "title": "OpenAI releases GPT-5.2 after “code red” Google threat alert",
+      "text": "",
+      "date": "2025-12-11",
+      "id": 1765792159235,
+      "createdAt": "2025-12-15T09:49:19.235Z"
+    },
+    {
+      "title": "VCs discuss why most consumer AI startups still lack staying power",
+      "text": "The next consumer tech revolution may require an introduction of a new personal device. ",
+      "date": "2025-12-16",
+      "id": 1765872003773,
+      "createdAt": "2025-12-16T08:00:03.773Z"
+    },
+    {
+      "title": "OpenAI-backed biotech firm Chai Discovery raises $130M Series B at $1.3B valuation",
+      "text": "Chai is building foundation models for drug discovery, specifically to predict interactions between  molecules so they could be reprogramed for cures.",
+      "date": "2025-12-15",
+      "id": 1765872003778,
+      "createdAt": "2025-12-16T08:00:03.778Z"
+    },
+    {
+      "title": "Disney&#8217;s OpenAI deal is exclusive for just one year &#8212; then it&#8217;s open season",
+      "text": "After the one year is up, Disney is free to sign similar deals with other AI companies. ",
+      "date": "2025-12-15",
+      "id": 1765872003781,
+      "createdAt": "2025-12-16T08:00:03.781Z"
+    },
+    {
+      "title": "Nvidia bulks up open source offerings with an acquisition and new open AI models",
+      "text": "Nvidia acquired SchedMD, the lead developer of Slurm, and launched the Nemotron 3 family of open source AI models. ",
+      "date": "2025-12-15",
+      "id": 1765872003783,
+      "createdAt": "2025-12-16T08:00:03.783Z"
+    },
+    {
+      "title": "Creative Commons announces tentative support for AI &#8216;pay-to-crawl&#8217; systems",
+      "text": "The organization offered support for this idea of an AI marketplace, and  suggested several guiding principles. ",
+      "date": "2025-12-15",
+      "id": 1765872003833,
+      "createdAt": "2025-12-16T08:00:03.833Z"
+    },
+    {
+      "title": "Merriam-Webster’s word of the year delivers a dismissive verdict on junk AI content",
+      "text": "",
+      "date": "2025-12-15",
+      "id": 1765872003836,
+      "createdAt": "2025-12-16T08:00:03.836Z"
+    },
+    {
+      "title": "The Download: introducing the AI Hype Correction package",
+      "text": "This is today&#8217;s edition of The Download, our weekday newsletter that provides a daily dose of what&#8217;s going on in the world of technology. Introducing: the AI Hype Correction package AI is ",
+      "date": "2025-12-15",
+      "id": 1765872003839,
+      "createdAt": "2025-12-16T08:00:03.839Z"
+    },
+    {
+      "title": "AI coding is now everywhere. But not everyone is convinced.",
+      "text": "Depending who you ask, AI-powered coding is either giving software developers an unprecedented productivity boost or churning out masses of poorly designed code that saps their attention and sets soft",
+      "date": "2025-12-15",
+      "id": 1765872003842,
+      "createdAt": "2025-12-16T08:00:03.842Z"
+    },
+    {
+      "title": "A brief history of Sam Altman’s hype",
+      "text": "Each time you’ve heard a borderline outlandish idea of what AI will be capable of, it often turns out that Sam Altman was, if not the first to articulate it, at least the most persuasive and influenti",
+      "date": "2025-12-15",
+      "id": 1765872003845,
+      "createdAt": "2025-12-16T08:00:03.845Z"
+    },
+    {
+      "title": "The AI doomers feel undeterred",
+      "text": "It’s a weird time to be an AI doomer. This small but influential community of researchers, scientists, and policy experts believes, in the simplest terms, that AI could get so good it could be bad—ver",
+      "date": "2025-12-15",
+      "id": 1765872003848,
+      "createdAt": "2025-12-16T08:00:03.848Z"
+    },
+    {
+      "title": "Weeks after raising $100M, investors pump another $180M into hot Indian startup MoEngage",
+      "text": "The deal valued MoEngage at \"well over\" $900 million post-money.",
+      "date": "2025-12-17",
+      "id": 1765958407347,
+      "createdAt": "2025-12-17T08:00:07.347Z"
+    },
+    {
+      "title": "DoorDash rolls out Zesty, an AI social app for discovering new restaurants",
+      "text": "Users can view and share photos and comments about restaurants they’ve visited, discover content from others, and follow people just like on any social network. ",
+      "date": "2025-12-16",
+      "id": 1765958407372,
+      "createdAt": "2025-12-17T08:00:07.372Z"
+    },
+    {
+      "title": "Meta&#8217;s AI glasses can now help you hear conversations better",
+      "text": "Conversation focus uses the AI glasses' open-ear speakers to amplify the voice of the person you're talking to, says Meta. ",
+      "date": "2025-12-16",
+      "id": 1765958407377,
+      "createdAt": "2025-12-17T08:00:07.377Z"
+    },
+    {
+      "title": "OpenAI continues on its &#8216;code red&#8217; warpath with new image generation model",
+      "text": "OpenAI rolls out GPT Image 1.5 for ChatGPT, promising 4x faster generation, better instruction-following, and precise edits. The launch  escalates its rivalry with Google Gemini.",
+      "date": "2025-12-16",
+      "id": 1765958407380,
+      "createdAt": "2025-12-17T08:00:07.380Z"
+    },
+    {
+      "title": "Uber Eats alum lands $14M seed from a16z to fix WhatsApp chaos for LatAm&#8217;s doctors",
+      "text": "Leona Health built an AI co-pilot to manage the flood of patient messages Latin American doctors receive on WhatsApp.",
+      "date": "2025-12-16",
+      "id": 1765958407383,
+      "createdAt": "2025-12-17T08:00:07.383Z"
+    },
+    {
+      "title": "Creating psychological safety in the AI era",
+      "text": "Rolling out enterprise-grade AI means climbing two steep cliffs at once. First, understanding and implementing the tech itself. And second, creating the cultural conditions where employees can maximiz",
+      "date": "2025-12-16",
+      "id": 1765958407387,
+      "createdAt": "2025-12-17T08:00:07.387Z"
+    },
+    {
+      "title": "The Download: why 2025 has been the year of AI hype correction, and fighting GPS jamming",
+      "text": "This is today&#8217;s edition of The Download, our weekday newsletter that provides a daily dose of what&#8217;s going on in the world of technology. The great AI hype correction of 2025 Some disillus",
+      "date": "2025-12-16",
+      "id": 1765958407390,
+      "createdAt": "2025-12-17T08:00:07.390Z"
+    },
+    {
+      "title": "Why it&#8217;s time to reset our expectations for AI",
+      "text": "Can I ask you a question: How do you feel about AI right now? Are you still excited? When you hear that OpenAI or Google just dropped a new model, do you still get that buzz? Or has the shine come off",
+      "date": "2025-12-16",
+      "id": 1765958407394,
+      "createdAt": "2025-12-17T08:00:07.394Z"
+    },
+    {
+      "title": "Quantum navigation could solve the military’s GPS jamming problem",
+      "text": "In late September, a Spanish military plane carrying the country’s defense minister to a base in Lithuania was reportedly the subject of a kind of attack—not by a rocket or anti-aircraft rounds, but b",
+      "date": "2025-12-16",
+      "id": 1765958407397,
+      "createdAt": "2025-12-17T08:00:07.397Z"
+    },
+    {
+      "title": "Disney invests $1 billion in OpenAI, licenses 200 characters for AI video app Sora",
+      "text": "",
+      "date": "2025-12-11",
+      "id": 1765958407400,
+      "createdAt": "2025-12-17T08:00:07.400Z"
+    },
+    {
+      "title": "Adobe hit with proposed class-action, accused of misusing authors&#8217; work in AI training",
+      "text": "The lawsuit is just the latest in a string of copyright-related legal complaints aimed at the AI industry. ",
+      "date": "2025-12-18",
+      "id": 1766044803879,
+      "createdAt": "2025-12-18T08:00:03.879Z"
+    },
+    {
+      "title": "Amazon appoints longtime AWS exec Peter DeSantis to lead new AI org",
+      "text": "DeSantis has spent 27 years at Amazon, including eight years as an SVP for AWS, the cloud provider that powers about one-third of the internet.",
+      "date": "2025-12-17",
+      "id": 1766044803885,
+      "createdAt": "2025-12-18T08:00:03.885Z"
+    },
+    {
+      "title": "Google launches Gemini 3 Flash, makes it the default model in the Gemini app",
+      "text": "Google is making Gemini 3 Flash the default model in the Gemini app and oAI model for Search",
+      "date": "2025-12-17",
+      "id": 1766044803888,
+      "createdAt": "2025-12-18T08:00:03.888Z"
+    },
+    {
+      "title": "Mozilla&#8217;s new CEO says AI is coming to Firefox, but will remain a choice",
+      "text": "Mozilla has appointed Anthony Enzor-DeMeo as its CEO as the Firefox developer scrambles to adapt in a rapidly changing browser market.",
+      "date": "2025-12-17",
+      "id": 1766044803891,
+      "createdAt": "2025-12-18T08:00:03.891Z"
+    },
+    {
+      "title": "Google&#8217;s vibe-coding tool Opal comes to Gemini",
+      "text": "The company on Wednesday said it is integrating the tool, which lets you build AI-powered mini apps, inside the Gemini web app, allowing users to create their own custom apps.",
+      "date": "2025-12-17",
+      "id": 1766044803937,
+      "createdAt": "2025-12-18T08:00:03.937Z"
+    },
+    {
+      "title": "OpenAI’s new ChatGPT image generator makes faking photos easy",
+      "text": "",
+      "date": "2025-12-17",
+      "id": 1766044803941,
+      "createdAt": "2025-12-18T08:00:03.941Z"
+    },
+    {
+      "title": "Browser extensions with 8 million users collect extended AI conversations",
+      "text": "",
+      "date": "2025-12-17",
+      "id": 1766044803945,
+      "createdAt": "2025-12-18T08:00:03.945Z"
+    },
+    {
+      "title": "This Nobel Prize–winning chemist dreams of making water from thin air",
+      "text": "Omar Yaghi was a quiet child, diligent, unlikely to roughhouse with his nine siblings. So when he was old enough, his parents tasked him with one of the family’s most vital chores: fetching water. Lik",
+      "date": "2025-12-17",
+      "id": 1766044803950,
+      "createdAt": "2025-12-18T08:00:03.950Z"
+    },
+    {
+      "title": "ChatGPT launches an app store, lets developers know it&#8217;s open for business",
+      "text": "OpenAI is looking to populate its flagship chatbot with a host of new user experiences. ",
+      "date": "2025-12-18",
+      "id": 1766131200714,
+      "createdAt": "2025-12-19T08:00:00.714Z"
+    },
+    {
+      "title": "Why British politicians are flocking to American tech giants",
+      "text": "Former British Chancellor of the Exchequer George Osborne has joined OpenAI as managing director and head of OpenAI for Countries. He also will run Coinbase's internal advisory council.",
+      "date": "2025-12-18",
+      "id": 1766131200717,
+      "createdAt": "2025-12-19T08:00:00.717Z"
+    },
+    {
+      "title": "ChatGPT&#8217;s mobile app hits new milestone of $3B in consumer spending",
+      "text": "ChatGPT has reached $3B in lifetime mobile consumer spending in just 31 months, faster than TikTok and major streaming apps.",
+      "date": "2025-12-18",
+      "id": 1766131200720,
+      "createdAt": "2025-12-19T08:00:00.720Z"
+    },
+    {
+      "title": "Peripheral Labs taps into self-driving car sensors to bring sports fans right into the game",
+      "text": "The startup has raised a $3.6 million seed round led by Khosla Ventures.",
+      "date": "2025-12-18",
+      "id": 1766131200734,
+      "createdAt": "2025-12-19T08:00:00.734Z"
+    },
+    {
+      "title": "Luma releases a new AI model that lets users generate a video from a start  and end frame",
+      "text": "Luma AI's new model is available through the company's Dream Machine platform.",
+      "date": "2025-12-18",
+      "id": 1766131200736,
+      "createdAt": "2025-12-19T08:00:00.736Z"
+    },
+    {
+      "title": "Take our quiz on the year in health and biotechnology",
+      "text": "In just a couple of weeks, we’ll be bidding farewell to 2025. And what a year it has been! Artificial intelligence is being incorporated into more aspects of our lives, weight-loss drugs have expanded",
+      "date": "2025-12-18",
+      "id": 1766131200739,
+      "createdAt": "2025-12-19T08:00:00.739Z"
+    },
+    {
+      "title": "The Download: the worst technology of 2025, and Sam Altman&#8217;s AI hype",
+      "text": "This is today&#8217;s edition of The Download, our weekday newsletter that provides a daily dose of what&#8217;s going on in the world of technology. The 8 worst technology flops of 2025 Welcome to ou",
+      "date": "2025-12-18",
+      "id": 1766131200742,
+      "createdAt": "2025-12-19T08:00:00.742Z"
+    },
+    {
+      "title": "Can AI really help us discover new materials?",
+      "text": "Judging from headlines and social media posts in recent years, one might reasonably assume that AI is going to fix the power grid, cure the world’s diseases, and finish my holiday shopping for me. But",
+      "date": "2025-12-18",
+      "id": 1766131200744,
+      "createdAt": "2025-12-19T08:00:00.744Z"
+    },
+    {
+      "title": "Ex-Splunk execs&#8217; startup Resolve AI hits $1 billion valuation with Series A",
+      "text": "The round was led by Lightspeed Venture Partners, according to people familiar with the deal.",
+      "date": "2025-12-20",
+      "id": 1766217602211,
+      "createdAt": "2025-12-20T08:00:02.211Z"
+    },
+    {
+      "title": "Cursor continues acquisition spree with Graphite deal",
+      "text": "Graphite is an AI code review assistant that was last valued at $290 million.",
+      "date": "2025-12-19",
+      "id": 1766217602217,
+      "createdAt": "2025-12-20T08:00:02.217Z"
+    },
+    {
+      "title": "Yann LeCun confirms his new &#8216;world model&#8217; startup, reportedly seeks $5B+ valuation",
+      "text": "Renowned AI scientist Yann LeCun confirmed on Thursday the worst-kept secret in the tech world: that he had indeed launched a new startup. Although he did say he will not be running the new company as",
+      "date": "2025-12-19",
+      "id": 1766217602220,
+      "createdAt": "2025-12-20T08:00:02.220Z"
+    },
+    {
+      "title": "Hardware&#8217;s brutal week: iRobot, Luminar, and Rad Power go bankrupt",
+      "text": "The hardware world had a brutal week, with iRobot, Luminar, and Rad Power Bikes all filing for bankruptcy.&#160; Each company faces its own mix of tariff pressures, supply chain issues, and shifting m",
+      "date": "2025-12-19",
+      "id": 1766217602223,
+      "createdAt": "2025-12-20T08:00:02.223Z"
+    },
+    {
+      "title": "OpenAI adds new teen safety rules to ChatGPT as lawmakers weigh AI standards for minors",
+      "text": "OpenAI updated its guidelines for how its AI models should behave with users under 18, and published new AI literacy resources for teens and parents. Still, questions remain about how well policies tr",
+      "date": "2025-12-19",
+      "id": 1766217602226,
+      "createdAt": "2025-12-20T08:00:02.226Z"
+    },
+    {
+      "title": "The Download: China&#8217;s dying EV batteries, and why AI doomers are doubling down",
+      "text": "This is today&#8217;s edition of The Download, our weekday newsletter that provides a daily dose of what&#8217;s going on in the world of technology. China figured out how to sell EVs. Now it has to b",
+      "date": "2025-12-19",
+      "id": 1766217602229,
+      "createdAt": "2025-12-20T08:00:02.229Z"
+    },
+    {
+      "title": "OpenAI allows users to directly adjust ChatGPT’s enthusiasm level",
+      "text": "ChatGPT users can now tweak the chatbot’s warmth, enthusiasm, and emoji use.",
+      "date": "2025-12-20",
+      "id": 1766304005042,
+      "createdAt": "2025-12-21T08:00:05.042Z"
+    },
+    {
+      "title": "New York Governor Kathy Hochul signs RAISE Act to regulate AI safety",
+      "text": "The bill will require large AI developers to publish information about their safety protocols and report safety incidents to the state within 72 hours.",
+      "date": "2025-12-20",
+      "id": 1766304005047,
+      "createdAt": "2025-12-21T08:00:05.047Z"
+    },
+    {
+      "title": "OpenAI says AI browsers may always be vulnerable to prompt injection attacks",
+      "text": "OpenAI says prompt injections will always be a risk for AI browsers with agentic capabilities, like Atlas. But the firm is beefing up its cybersecurity with an \"LLM-based automated attacker.\" ",
+      "date": "2025-12-22",
+      "id": 1766476809991,
+      "createdAt": "2025-12-23T08:00:09.991Z"
+    },
+    {
+      "title": "ChatGPT launches a year-end review like Spotify Wrapped",
+      "text": "The experience includes awards, poems, and pictures referencing your year in chat.",
+      "date": "2025-12-22",
+      "id": 1766476809995,
+      "createdAt": "2025-12-23T08:00:09.995Z"
+    },
+    {
+      "title": "Splat&#8217;s app uses AI to turn your photos into coloring pages for kids",
+      "text": "The app turns your own photos into pages for your kids to color, via AI. ",
+      "date": "2025-12-22",
+      "id": 1766476809998,
+      "createdAt": "2025-12-23T08:00:09.998Z"
+    },
+    {
+      "title": "Welcome to Kenya’s Great Carbon Valley: a bold new gamble to fight climate change",
+      "text": "The earth around Lake Naivasha, a shallow freshwater basin in south-central Kenya, does not seem to want to lie still.&#160; Ash from nearby Mount Longonot, which erupted as recently as the 1860s, rem",
+      "date": "2025-12-22",
+      "id": 1766476810001,
+      "createdAt": "2025-12-23T08:00:10.001Z"
+    },
+    {
+      "title": "John Carreyrou and other authors bring new lawsuit against six major AI companies",
+      "text": "These authors rejected Anthropic's class action settlement, arguing that \"LLM companies should not be able to so easily extinguish thousands upon thousands of high-value claims at bargain-basement rat",
+      "date": "2025-12-23",
+      "id": 1766563208949,
+      "createdAt": "2025-12-24T08:00:08.949Z"
+    },
+    {
+      "title": "Marissa Mayer’s new startup Dazzle raises $8M led by Forerunner&#8217;s Kirsten Green",
+      "text": "Mayer launched Dazzle after shuttering her photo and contact management startup Sunshine. Green’s investment suggests Dazzle is poised for the coming wave of new AI-infused consumer businesses. ",
+      "date": "2025-12-23",
+      "id": 1766563208953,
+      "createdAt": "2025-12-24T08:00:08.953Z"
+    },
+    {
+      "title": "Amazon&#8217;s AI assistant Alexa+ now works with Angi, Expedia, Square, and Yelp",
+      "text": "The new integrations join other services like Yelp, Uber, OpenTable and others. ",
+      "date": "2025-12-23",
+      "id": 1766563208956,
+      "createdAt": "2025-12-24T08:00:08.956Z"
+    },
+    {
+      "title": "Lemon Slice nabs $10.5M from YC and Matrix to build out its digital avatar tech",
+      "text": "Digital avatar generation company Lemon Slice is working to add a video layer to AI chatbots with a new diffusion model that can create digital avatars from a single image.",
+      "date": "2025-12-23",
+      "id": 1766563208959,
+      "createdAt": "2025-12-24T08:00:08.959Z"
+    },
+    {
+      "title": "How social media encourages the worst of AI boosterism",
+      "text": "Demis Hassabis, CEO of Google DeepMind, summed it up in three words: “This is embarrassing.”&#160;&#160; Hassabis was replying on X to an overexcited post by Sébastien Bubeck, a research scientist at ",
+      "date": "2025-12-23",
+      "id": 1766563208962,
+      "createdAt": "2025-12-24T08:00:08.962Z"
+    },
+    {
+      "title": "How I learned to stop worrying and love AI slop",
+      "text": "Lately, everywhere I scroll, I keep seeing the same fish-eyed CCTV view: a grainy wide shot from the corner of a living room, a driveway at night, an empty grocery store. Then something impossible hap",
+      "date": "2025-12-23",
+      "id": 1766563208967,
+      "createdAt": "2025-12-24T08:00:08.967Z"
+    },
+    {
+      "title": "Nvidia to license AI chip challenger Groq&#8217;s tech and hire its CEO",
+      "text": "With Groq on its side, Nvidia is poised to become even more dominant in chip manufacturing.",
+      "date": "2025-12-24",
+      "id": 1766649608913,
+      "createdAt": "2025-12-25T08:00:08.913Z"
+    },
+    {
+      "title": "Why the operating room is ripe for AI, according to Akara",
+      "text": "There&#8217;s plenty of hype around AI and robots in healthcare, but the problem that&#8217;s actually costing hospitals money right now is operating room coordination. Two to four hours of OR time is",
+      "date": "2025-12-24",
+      "id": 1766649608948,
+      "createdAt": "2025-12-25T08:00:08.948Z"
+    },
+    {
+      "title": "Waymo is testing Gemini as an in-car AI assistant in its robotaxis",
+      "text": "Waymo is testing a Gemini-powered in-car AI assistant, per findings from a 1,200-line system prompt. The assistant can answer general knowledge questions, control certain in-cabin features, and more. ",
+      "date": "2025-12-24",
+      "id": 1766649608964,
+      "createdAt": "2025-12-25T08:00:08.964Z"
+    },
+    {
+      "title": "Italy tells Meta to suspend its policy that bans rival AI chatbots from WhatsApp",
+      "text": "Italy has ordered Meta to suspend its policy that bans companies from using WhatsApp's business tools to offer their own AI chatbots on the popular chat app.",
+      "date": "2025-12-24",
+      "id": 1766649608968,
+      "createdAt": "2025-12-25T08:00:08.968Z"
+    },
+    {
+      "title": "Can AI fix the operating room? This startup thinks so",
+      "text": "There&#8217;s plenty of hype around AI and robots in healthcare, but the problem that&#8217;s actually costing hospitals money right now is operating room coordination.&#160;Two to four hours of OR ti",
+      "date": "2025-12-24",
+      "id": 1766649608970,
+      "createdAt": "2025-12-25T08:00:08.970Z"
+    },
+    {
+      "title": "Four bright spots in climate news in 2025",
+      "text": "Climate news hasn’t been great in 2025. Global greenhouse-gas emissions hit record highs (again). This year is set to be either the second or third warmest on record. Climate-fueled disasters like wil",
+      "date": "2025-12-24",
+      "id": 1766649608974,
+      "createdAt": "2025-12-25T08:00:08.974Z"
+    },
+    {
+      "title": "AI Wrapped: The 14 AI terms you couldn’t avoid in 2025",
+      "text": "If the past 12 months have taught us anything, it’s that the AI hype train is showing no signs of slowing. It’s hard to believe that at the beginning of the year, DeepSeek had yet to turn the entire i",
+      "date": "2025-12-25",
+      "id": 1766736007889,
+      "createdAt": "2025-12-26T08:00:07.889Z"
+    },
+    {
+      "title": "Equity&#8217;s 2026 Predictions: AI Agents, Blockbuster IPOs, and the Future of VC",
+      "text": "TechCrunch&#8217;s&#160;Equity&#160;crew is bringing 2025 to a close and getting ahead on the year to come with our annual&#160;predictions&#160;episode! Hosts Kirsten Korosec, Anthony Ha, and Rebecca",
+      "date": "2025-12-26",
+      "id": 1766822402976,
+      "createdAt": "2025-12-27T08:00:02.976Z"
+    },
+    {
+      "title": "The paints, coatings, and chemicals making the world a cooler place",
+      "text": "It’s getting harder to beat the heat. During the summer of 2025, heat waves knocked out power grids in North America, Europe, and the Middle East. Global warming means more people need air-­conditioni",
+      "date": "2025-12-26",
+      "id": 1766822402982,
+      "createdAt": "2025-12-27T08:00:02.982Z"
+    },
+    {
+      "title": "OpenAI is looking for a new Head of Preparedness",
+      "text": "OpenAI is looking to hire a new executive responsible for studying emerging AI-related risks in areas ranging from computer security to mental health.",
+      "date": "2025-12-28",
+      "id": 1766995210197,
+      "createdAt": "2025-12-29T08:00:10.197Z"
+    },
+    {
+      "title": "Meta just bought Manus, an AI startup everyone has been talking about",
+      "text": "Meta says it'll keep Manus running independently while weaving its agents into Facebook, Instagram, and WhatsApp, where Meta's own chatbot, Meta AI, is already available to users.",
+      "date": "2025-12-30",
+      "id": 1767081601928,
+      "createdAt": "2025-12-30T08:00:01.928Z"
+    },
+    {
+      "title": "2025 was the year AI got a vibe check",
+      "text": "AI’s early-2025 spending spree featured massive raises and trillion-dollar infrastructure promises. By year’s end, hype gave way to a vibe check, with growing scrutiny over sustainability, safety, and",
+      "date": "2025-12-29",
+      "id": 1767081601931,
+      "createdAt": "2025-12-30T08:00:01.931Z"
+    },
+    {
+      "title": "Plaud Note Pro is an excellent AI-powered recorder that I carry everywhere",
+      "text": "Plaud Note Pro is a $179 notetaker, which is an excellent recording device first",
+      "date": "2025-12-29",
+      "id": 1767081601934,
+      "createdAt": "2025-12-30T08:00:01.934Z"
+    },
+    {
+      "title": "How to use the new ChatGPT app integrations, including DoorDash, Spotify, Uber, and others",
+      "text": "Learn how to use Spotify, Canva, Figma, Expedia, and other apps directly in ChatGPT. ",
+      "date": "2025-12-29",
+      "id": 1767081601938,
+      "createdAt": "2025-12-30T08:00:01.938Z"
+    },
+    {
+      "title": "VCs predict strong enterprise AI adoption next year — again",
+      "text": "More than 20 venture capitalists share their thoughts on AI agents, enterprise AI budgets, and more for 2026. ",
+      "date": "2025-12-29",
+      "id": 1767081601942,
+      "createdAt": "2025-12-30T08:00:01.942Z"
+    },
+    {
+      "title": "The best AI-powered dictation apps of 2025",
+      "text": "AI-powered dictation apps are useful for replying to emails, taking notes, and even coding through your voice",
+      "date": "2025-12-30",
+      "id": 1767168001920,
+      "createdAt": "2025-12-31T08:00:01.920Z"
+    },
+    {
+      "title": "VCs predict enterprises will spend more on AI in 2026 — through fewer vendors",
+      "text": "Enterprises have been experimenting with AI tools for a few years. Investors predict they will start to pick winners in 2026. ",
+      "date": "2025-12-30",
+      "id": 1767168001937,
+      "createdAt": "2025-12-31T08:00:01.937Z"
+    },
+    {
+      "title": "The ascent of the AI therapist",
+      "text": "We’re in the midst of a global mental-­health crisis. More than a billion people worldwide suffer from a mental-health condition, according to the World Health Organization. The prevalence of anxiety ",
+      "date": "2025-12-30",
+      "id": 1767168001947,
+      "createdAt": "2025-12-31T08:00:01.947Z"
+    },
+    {
+      "title": "&#8216;College dropout&#8217; has become the most coveted startup founder credential",
+      "text": "AI founders are increasingly using their \"dropout\" status as a credential during YC pitches.",
+      "date": "2026-01-01",
+      "id": 1767254405430,
+      "createdAt": "2026-01-01T08:00:05.430Z"
+    },
+    {
+      "title": "Investors predict AI is coming for labor in 2026",
+      "text": "The exact impact AI will have on the enterprise labor market is unclear but investors predict trends will start to emerge in 2026. ",
+      "date": "2025-12-31",
+      "id": 1767254405442,
+      "createdAt": "2026-01-01T08:00:05.442Z"
+    },
+    {
+      "title": "European banks plan to cut 200,000 jobs as AI takes hold",
+      "text": "The bloodletting will hit hardest in back-office operations, risk management, and compliance.",
+      "date": "2026-01-01",
+      "id": 1767340804852,
+      "createdAt": "2026-01-02T08:00:04.852Z"
+    },
+    {
+      "title": "OpenAI bets big on audio as Silicon Valley declares war on screens",
+      "text": "The form factors may differ, but the thesis is the same: audio is the interface of the future. Every space -- your home, your car, even your face -- is becoming an interface. ",
+      "date": "2026-01-01",
+      "id": 1767340804855,
+      "createdAt": "2026-01-02T08:00:04.855Z"
+    },
+    {
+      "title": "India orders Musk&#8217;s X to fix Grok over &#8216;obscene&#8217; AI content",
+      "text": "India's IT ministry has given X 72 hours to submit an action-taken report.",
+      "date": "2026-01-02",
+      "id": 1767427206864,
+      "createdAt": "2026-01-03T08:00:06.864Z"
+    },
+    {
+      "title": "How AI is reshaping work and who gets to do it, according to Mercor&#8217;s CEO",
+      "text": "Three-year-old startup&#160;Mercor&#160;has become a&#160;$10 billion&#160;middleman&#160;in AI&#8217;s data gold rush. The company connects AI labs like OpenAI and Anthropic with former employees of ",
+      "date": "2026-01-02",
+      "id": 1767427206868,
+      "createdAt": "2026-01-03T08:00:06.868Z"
+    },
+    {
+      "title": "Nvidia&#8217;s AI empire: A look at its top startup investments",
+      "text": "Over the last two years, Nvidia has used its ballooning fortunes to invest in over 100 AI startups. Here are the giant semiconductor's largest investments.",
+      "date": "2026-01-02",
+      "id": 1767427206871,
+      "createdAt": "2026-01-03T08:00:06.871Z"
+    },
+    {
+      "title": "In 2026, AI will move from hype to pragmatism",
+      "text": "In 2026, here's what you can expect from the AI industry: new architectures, smaller models, world models, reliable agents, physical AI, and products designed for real-world use.",
+      "date": "2026-01-02",
+      "id": 1767427206874,
+      "createdAt": "2026-01-03T08:00:06.874Z"
+    },
+    {
+      "title": "Job titles of the future: Head-transplant surgeon",
+      "text": "The Italian neurosurgeon Sergio Canavero has been preparing for a surgery that might never happen. His idea? Swap a sick person’s head—or perhaps just the brain—onto a younger, healthier body. Canaver",
+      "date": "2026-01-02",
+      "id": 1767427206877,
+      "createdAt": "2026-01-03T08:00:06.877Z"
+    },
+    {
+      "title": "Tech billionaires cashed out $16 billion in 2025 as stocks soared",
+      "text": "Jeff Bezos led the way. The Amazon founder sold 25 million shares for $5.7 billion in June and July, right around the time he was getting hitched to Lauren Sanchez in Venice.",
+      "date": "2026-01-03",
+      "id": 1767513603304,
+      "createdAt": "2026-01-04T08:00:03.304Z"
+    },
+    {
+      "title": "Supply chains, AI, and the cloud: The biggest failures (and one success) of 2025",
+      "text": "",
+      "date": "2025-12-31",
+      "id": 1767513603316,
+      "createdAt": "2026-01-04T08:00:03.316Z"
+    },
+    {
+      "title": "From prophet to product: How AI came back down to earth in 2025",
+      "text": "",
+      "date": "2025-12-31",
+      "id": 1767513603319,
+      "createdAt": "2026-01-04T08:00:03.319Z"
+    },
+    {
+      "title": "How AI coding agents work—and what to remember if you use them",
+      "text": "",
+      "date": "2025-12-24",
+      "id": 1767513603323,
+      "createdAt": "2026-01-04T08:00:03.323Z"
+    },
+    {
+      "title": "DoorDash says it banned driver who seemingly faked a delivery using AI",
+      "text": "DoorDash seems to have confirmed a viral story about a driver using an AI-generated photo to lie about making a delivery.",
+      "date": "2026-01-04",
+      "id": 1767600004460,
+      "createdAt": "2026-01-05T08:00:04.460Z"
+    },
+    {
+      "title": "Plaud launches a new AI pin and a desktop meeting notetaker",
+      "text": "Plaud is going after the likes of Granola to launch a desktop app that records online meetings",
+      "date": "2026-01-04",
+      "id": 1767600004464,
+      "createdAt": "2026-01-05T08:00:04.464Z"
+    },
+    {
+      "title": "AMD unveils new AI PC processors for general use and gaming at CES",
+      "text": "AMD announced the latest version of its AI-powered PC chips designed for a variety of tasks from gaming to content creation and multitasking. ",
+      "date": "2026-01-06",
+      "id": 1767686405711,
+      "createdAt": "2026-01-06T08:00:05.711Z"
+    },
+    {
+      "title": "Microsoft&#8217;s Nadella wants us to stop thinking of AI as &#8216;slop&#8217;",
+      "text": "Nadella wants us to think of AI as a human helper instead of a slop-generating job killer. New data for 2026 indicates he could be right.",
+      "date": "2026-01-05",
+      "id": 1767686405733,
+      "createdAt": "2026-01-06T08:00:05.733Z"
+    },
+    {
+      "title": "Nvidia wants to be the Android of generalist robotics",
+      "text": "Nvidia unveiled a full-stack robotics ecosystem at CES 2026, including foundation models, simulation tools, and hardware. It wants to be the default platform for robotics.",
+      "date": "2026-01-05",
+      "id": 1767686405737,
+      "createdAt": "2026-01-06T08:00:05.737Z"
+    },
+    {
+      "title": "Nvidia launches powerful new Rubin chip architecture",
+      "text": "Nvidia CEO Jensen Huang officially launched the company’s new Rubin computing architecture, which he described as the state of the art in AI computing.",
+      "date": "2026-01-05",
+      "id": 1767686405740,
+      "createdAt": "2026-01-06T08:00:05.740Z"
+    },
+    {
+      "title": "Nvidia launches Alpamayo, open AI models that allow autonomous vehicles to &#8216;think like a human&#8217;",
+      "text": "Nvidia unveiled Alpamayo at CES 2026, which includes a reasoning vision language action model that allows an autonomous vehicle to think more like a human and provide chain-of-thought reasoning.",
+      "date": "2026-01-05",
+      "id": 1767686405744,
+      "createdAt": "2026-01-06T08:00:05.744Z"
+    },
+    {
+      "title": "The overlooked driver of digital transformation",
+      "text": "When business leaders talk about digital transformation, their focus often jumps straight to cloud platforms, AI tools, or collaboration software. Yet, one of the most fundamental enablers of how orga",
+      "date": "2026-01-05",
+      "id": 1767686405748,
+      "createdAt": "2026-01-06T08:00:05.748Z"
+    },
+    {
+      "title": "The Download: Kenya&#8217;s Great Carbon Valley, and the AI terms that were everywhere in 2025",
+      "text": "This is today&#8217;s edition of The Download, our weekday newsletter that provides a daily dose of what&#8217;s going on in the world of technology. Welcome to Kenya’s Great Carbon Valley: a bold new",
+      "date": "2026-01-05",
+      "id": 1767686405751,
+      "createdAt": "2026-01-06T08:00:05.751Z"
+    },
+    {
+      "title": "What&#8217;s next for AI in 2026",
+      "text": "MIT Technology Review’s What’s Next series looks across industries, trends, and technologies to give you a first look at the future. You can read the rest of them here. In an industry in constant flux",
+      "date": "2026-01-05",
+      "id": 1767686405756,
+      "createdAt": "2026-01-06T08:00:05.756Z"
+    },
+    {
+      "title": "McKinsey and General Catalyst execs say the era of &#8216;learn once, work forever&#8217; is over",
+      "text": "Calacanis, General Catalyst's Taneja, and McKinsey's Sternfels discussed how AI is reshaping technology and the labor force.",
+      "date": "2026-01-07",
+      "id": 1767772805771,
+      "createdAt": "2026-01-07T08:00:05.771Z"
+    },
+    {
+      "title": "CES 2026: Everything revealed, from Nvidia’s debuts to AMD’s new chips to Razer’s AI oddities",
+      "text": "CES 2026&#160;is in full swing in Las Vegas, with the show floor open to the public after a packed couple of days&#160;occupied by&#160;press conferences from the likes of Nvidia, Sony, and AMD&#160;a",
+      "date": "2026-01-06",
+      "id": 1767772805777,
+      "createdAt": "2026-01-07T08:00:05.777Z"
+    },
+    {
+      "title": "A viral Reddit post alleging fraud from a food delivery app turned out to be AI-generated",
+      "text": "When fake content goes viral, the damage has already been done, even if the post is debunked.",
+      "date": "2026-01-06",
+      "id": 1767772805780,
+      "createdAt": "2026-01-07T08:00:05.780Z"
+    },
+    {
+      "title": "xAI says it raised $20B in Series E funding",
+      "text": "Nvidia is among the many investors, but xAI has not disclosed if these investments come in the form of equity or debt.",
+      "date": "2026-01-06",
+      "id": 1767772805785,
+      "createdAt": "2026-01-07T08:00:05.785Z"
+    },
+    {
+      "title": "California lawmaker proposes a four-year ban on AI chatbots in kids&#8217; toys",
+      "text": "“Our children cannot be used as lab rats for Big Tech to experiment on,” Senator Steve Padilla said. He just introduced a bill to ban AI chatbots in toys until safety regulations are developed.  ",
+      "date": "2026-01-06",
+      "id": 1767772805788,
+      "createdAt": "2026-01-07T08:00:05.788Z"
+    },
+    {
+      "title": "Secrets of the sleep-deprived brain",
+      "text": "Nearly everyone has experienced it—after a night of poor sleep, your brain might seem foggy, and your mind drifts off when you should be paying attention. A new MIT study reveals what happens biologic",
+      "date": "2026-01-06",
+      "id": 1767772805791,
+      "createdAt": "2026-01-07T08:00:05.791Z"
+    },
+    {
+      "title": "Under 10% of an earthquake’s energy makes the ground shake",
+      "text": "Earthquakes are driven by energy stored up in rocks over millennia—energy that, once released, we perceive mainly in the form of the ground’s shaking. But a quake also generates a flash of heat and fr",
+      "date": "2026-01-06",
+      "id": 1767772805833,
+      "createdAt": "2026-01-07T08:00:05.833Z"
+    },
+    {
+      "title": "Listening to battery failure",
+      "text": "Lithium-ion batteries produce faint sounds as they charge, discharge, and degrade. But until now, nobody could interpret those sounds to detect when a battery might be about to lose power, fail, or bu",
+      "date": "2026-01-06",
+      "id": 1767772805837,
+      "createdAt": "2026-01-07T08:00:05.837Z"
+    },
+    {
+      "title": "Google and Character.AI negotiate first major settlements in teen chatbot death cases",
+      "text": "The settlements are among the first tied to lawsuits accusing AI companies of harming users.",
+      "date": "2026-01-08",
+      "id": 1767859202276,
+      "createdAt": "2026-01-08T08:00:02.276Z"
+    },
+    {
+      "title": "Ford has an AI assistant and new hands-free BlueCruise tech on the way",
+      "text": "Ford says the new generation of BlueCruise will be 30% cheaper to build than the current technology. ",
+      "date": "2026-01-08",
+      "id": 1767859202281,
+      "createdAt": "2026-01-08T08:00:02.281Z"
+    },
+    {
+      "title": "OpenAI unveils ChatGPT Health, says 230 million users ask about health each week",
+      "text": "The feature, which is expected to roll out in the coming weeks, will offer a dedicated space for conversations with ChatGPT about health.",
+      "date": "2026-01-07",
+      "id": 1767859202292,
+      "createdAt": "2026-01-08T08:00:02.292Z"
+    },
+    {
+      "title": "Where VCs think AI startups can win, even with OpenAI in the game",
+      "text": "Vanessa Larco, partner at Premise and former partner at NEA, thinks 2026 will finally be the year of consumer AI.&#160; Larco, who&#8217;s been investing in consumer and prosumer for years, thinks we&",
+      "date": "2026-01-07",
+      "id": 1767859202337,
+      "createdAt": "2026-01-08T08:00:02.337Z"
+    },
+    {
+      "title": "Anthropic reportedly raising $10B at $350B valuation",
+      "text": "Anthropic is reportedly in talks to raise $10 billion at a $350 billion valuation, marking its third mega-round in a year. ",
+      "date": "2026-01-07",
+      "id": 1767859202343,
+      "createdAt": "2026-01-08T08:00:02.343Z"
+    },
+    {
+      "title": "Deploying a hybrid approach to Web3 in the AI era",
+      "text": "When the concept of “Web 3.0” first emerged about a decade ago the idea was clear: Create a more user-controlled internet that lets you do everything you can now, except without servers or intermediar",
+      "date": "2026-01-07",
+      "id": 1767859202348,
+      "createdAt": "2026-01-08T08:00:02.348Z"
+    },
+    {
+      "title": "The Download: war in Europe, and the company that wants to cool the planet",
+      "text": "This is today&#8217;s edition of The Download, our weekday newsletter that provides a daily dose of what&#8217;s going on in the world of technology. Europe’s drone-filled vision for the future of war",
+      "date": "2026-01-07",
+      "id": 1767859202354,
+      "createdAt": "2026-01-08T08:00:02.354Z"
+    },
+    {
+      "title": "LLMs contain a LOT of parameters. But what’s a parameter?",
+      "text": "MIT Technology Review Explains: Let our writers untangle the complex, messy world of technology to help you understand what’s coming next. You can read more from the series here. I am writing this bec",
+      "date": "2026-01-07",
+      "id": 1767859202357,
+      "createdAt": "2026-01-08T08:00:02.357Z"
+    },
+    {
+      "title": "Governments grapple with the flood of non-consensual nudity on X",
+      "text": "For the past two weeks, X has been flooded with AI-manipulated nude images, created by the Grok AI chatbot — and governments around the world are promising to take action.",
+      "date": "2026-01-08",
+      "id": 1767945603081,
+      "createdAt": "2026-01-09T08:00:03.081Z"
+    },
+    {
+      "title": "OpenAI to acquire the team behind executive coaching AI tool Convogo",
+      "text": "OpenAI is acquiring the team behind executive coaching AI tool Convogo in an all-stock deal, adding to the firm's M&#038;A spree. ",
+      "date": "2026-01-08",
+      "id": 1767945603094,
+      "createdAt": "2026-01-09T08:00:03.094Z"
+    },
+    {
+      "title": "The most bizarre tech announced so far at CES 2026",
+      "text": "From an AI panda pet to an anime girl hologram for your desk, here are the wildest products at CES 2026.",
+      "date": "2026-01-08",
+      "id": 1767945603097,
+      "createdAt": "2026-01-09T08:00:03.097Z"
+    },
+    {
+      "title": "CES 2026: Follow live for the best, weirdest, and most interesting tech as physical AI and robots dominate the event",
+      "text": "CES 2026, the annual consumer tech conference held in Las Vegas, is here. And lucky for you, we have TechCrunch editors and reporters on the ground to cover the news, scout out the interesting, weird,",
+      "date": "2026-01-08",
+      "id": 1767945603140,
+      "createdAt": "2026-01-09T08:00:03.140Z"
+    },
+    {
+      "title": "ChatGPT Health lets you connect medical records to an AI that makes things up",
+      "text": "",
+      "date": "2026-01-08",
+      "id": 1767945603149,
+      "createdAt": "2026-01-09T08:00:03.149Z"
+    },
+    {
+      "title": "ChatGPT falls to new data-pilfering attack as a vicious cycle in AI continues",
+      "text": "",
+      "date": "2026-01-08",
+      "id": 1767945603159,
+      "createdAt": "2026-01-09T08:00:03.159Z"
+    },
+    {
+      "title": "The Download: mimicking pregnancy&#8217;s first moments in a lab, and AI parameters explained",
+      "text": "This is today&#8217;s edition of The Download, our weekday newsletter that provides a daily dose of what&#8217;s going on in the world of technology. Researchers are getting organoids pregnant with hu",
+      "date": "2026-01-08",
+      "id": 1767945603163,
+      "createdAt": "2026-01-09T08:00:03.163Z"
+    },
+    {
+      "title": "Using unstructured data to fuel enterprise AI success",
+      "text": "Enterprises are sitting on vast quantities of unstructured data, from call records and video footage to customer complaint histories and supply chain signals. Yet this invaluable business intelligence",
+      "date": "2026-01-08",
+      "id": 1767945603170,
+      "createdAt": "2026-01-09T08:00:03.170Z"
+    },
+    {
+      "title": "How the Sleepbuds maker, Ozlo, is building a platform for sleep data",
+      "text": "Ozlo Sleepbuds are going to have a big year, with new products, AI features, and more. ",
+      "date": "2026-01-09",
+      "id": 1768032003297,
+      "createdAt": "2026-01-10T08:00:03.297Z"
+    },
+    {
+      "title": "CES 2026 was all about &#8216;physical AI&#8217; and robots, robots, robots",
+      "text": "After years of chatbots and image generators, AI is finally leaving the screen. At CES 2026, that shift became impossible to ignore.&#160; The annual tech showcase in Las Vegas was dominated by &#8220",
+      "date": "2026-01-09",
+      "id": 1768032003335,
+      "createdAt": "2026-01-10T08:00:03.335Z"
+    },
+    {
+      "title": "CES 2026: Follow live for the best, weirdest, most interesting tech as this robot and AI-heavy event wraps up",
+      "text": "CES 2026, the annual consumer tech conference held in Las Vegas, is here. And lucky for you, we have TechCrunch editors and reporters on the ground to cover the news, scout out the interesting, weird,",
+      "date": "2026-01-09",
+      "id": 1768032003339,
+      "createdAt": "2026-01-10T08:00:03.339Z"
+    },
+    {
+      "title": "X restricts Grok&#8217;s image generation to paying subscribers only after drawing the world&#8217;s ire",
+      "text": "Elon Musk's AI company has restricted Grok's controversial AI image-generation feature to only paying subscribers on X, after the tool invited heated criticism from across the world for letting users ",
+      "date": "2026-01-09",
+      "id": 1768032003346,
+      "createdAt": "2026-01-10T08:00:03.346Z"
+    },
+    {
+      "title": "The Download: the case for AI slop, and helping CRISPR fulfill its promise",
+      "text": "This is today&#8217;s edition of The Download, our weekday newsletter that provides a daily dose of what&#8217;s going on in the world of technology. How I learned to stop worrying and love AI slop —C",
+      "date": "2026-01-09",
+      "id": 1768032003351,
+      "createdAt": "2026-01-10T08:00:03.351Z"
+    },
+    {
+      "title": "OpenAI is reportedly asking contractors to upload real work from past jobs",
+      "text": "An intellectual property lawyer says OpenAI is \"putting itself at great risk\" with this approach.",
+      "date": "2026-01-10",
+      "id": 1768118404933,
+      "createdAt": "2026-01-11T08:00:04.933Z"
+    },
+    {
+      "title": "Indonesia blocks Grok over non-consensual, sexualized deepfakes",
+      "text": "Indonesian officials said Saturday that they are temporarily blocking access to xAI’s chatbot Grok.",
+      "date": "2026-01-10",
+      "id": 1768118404938,
+      "createdAt": "2026-01-11T08:00:04.938Z"
+    },
+    {
+      "title": "Motional puts AI at center of robotaxi reboot as it targets 2026 for driverless service",
+      "text": "Motional says it will launch a driverless robotaxi service in Las Vegas before the end of 2026. ",
+      "date": "2026-01-12",
+      "id": 1768204805265,
+      "createdAt": "2026-01-12T08:00:05.265Z"
+    },
+    {
+      "title": "Google removes AI Overviews for certain medical queries",
+      "text": "This follows an investigation by the Guardian that found Google AI Overviews offering misleading information in response to some health-related queries.",
+      "date": "2026-01-11",
+      "id": 1768204805270,
+      "createdAt": "2026-01-12T08:00:05.270Z"
+    },
+    {
+      "title": "Indonesia and Malaysia block Grok over non-consensual, sexualized deepfakes",
+      "text": "Indonesian officials said Saturday that they are temporarily blocking access to xAI’s chatbot Grok.",
+      "date": "2026-01-11",
+      "id": 1768204805274,
+      "createdAt": "2026-01-12T08:00:05.274Z"
+    },
+    {
+      "title": "Google announces a new protocol to facilitate commerce using AI agents",
+      "text": "Google said that merchants can now offer discounts to users directly in AI mode results",
+      "date": "2026-01-11",
+      "id": 1768204805277,
+      "createdAt": "2026-01-12T08:00:05.277Z"
+    },
+    {
+      "title": "Meta-backed Hupo finds growth after pivot to AI sales coaching from mental wellness",
+      "text": "Hupo, backed by Meta, pivoted from mental wellness to AI sales coaching for banks and insurers, and secured a $10M Series A led by DST Global",
+      "date": "2026-01-13",
+      "id": 1768291201436,
+      "createdAt": "2026-01-13T08:00:01.436Z"
+    },
+    {
+      "title": "Hands-on with Bee, Amazon&#8217;s latest AI wearable",
+      "text": "We tried Amazon's new AI wearable Bee. It's not for pro users yet, but more features are expected this year.",
+      "date": "2026-01-13",
+      "id": 1768291201443,
+      "createdAt": "2026-01-13T08:00:01.443Z"
+    },
+    {
+      "title": "Why Amazon bought Bee, an AI wearable",
+      "text": "Amazon explains where its wearable Bee fits in and whether it will merge with Alexa.",
+      "date": "2026-01-12",
+      "id": 1768291201462,
+      "createdAt": "2026-01-13T08:00:01.462Z"
+    },
+    {
+      "title": "Mark Zuckerberg says Meta is launching its own AI infrastructure initiative",
+      "text": "",
+      "date": "2026-01-12",
+      "id": 1768291201466,
+      "createdAt": "2026-01-13T08:00:01.466Z"
+    },
+    {
+      "title": "Anthropic announces Claude for Healthcare following OpenAI&#8217;s ChatGPT Health reveal",
+      "text": "Anthropic's Claude for Healthcare is unveiled about a week after OpenAI announced its ChatGPT Health product.",
+      "date": "2026-01-12",
+      "id": 1768291201470,
+      "createdAt": "2026-01-13T08:00:01.470Z"
+    },
+    {
+      "title": "Google removes some AI health summaries after investigation finds “dangerous” flaws",
+      "text": "",
+      "date": "2026-01-12",
+      "id": 1768291201474,
+      "createdAt": "2026-01-13T08:00:01.474Z"
+    },
+    {
+      "title": "CES showed me why Chinese tech companies feel so optimistic",
+      "text": "This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first, sign up here. I decided to go to CES kind of at the last minute. Over the ho",
+      "date": "2026-01-12",
+      "id": 1768291201478,
+      "createdAt": "2026-01-13T08:00:01.478Z"
+    },
+    {
+      "title": "Mitigating emissions from air freight: Unlocking the potential of SAF with book and claim",
+      "text": "Emissions from air freight have increased by 25% since 2019, according to a 2024 analysis by environmental advocacy organization Stand.Earth. The researchers found that the expansion of cargo-only fle",
+      "date": "2026-01-12",
+      "id": 1768291201537,
+      "createdAt": "2026-01-13T08:00:01.537Z"
+    },
+    {
+      "title": "The Download: introducing this year&#8217;s 10 Breakthrough Technologies",
+      "text": "This is today&#8217;s edition of&#160;The Download,&#160;our weekday newsletter that provides a daily dose of what&#8217;s going on in the world of technology. Introducing this year’s 10 Breakthrough ",
+      "date": "2026-01-12",
+      "id": 1768291201541,
+      "createdAt": "2026-01-13T08:00:01.541Z"
+    },
+    {
+      "title": "Securing digital assets as crypto crime surges",
+      "text": "In February 2025, cyberattackers thought to be linked to North Korea executed a sophisticated supply chain attack on cryptocurrency exchange Bybit. By targeting its infrastructure and multi-signature ",
+      "date": "2026-01-12",
+      "id": 1768291201546,
+      "createdAt": "2026-01-13T08:00:01.546Z"
+    },
+    {
+      "title": "Microsoft announces glut of new data centers but says it won&#8217;t let your electricity bill go up",
+      "text": "The tech giant has pledged to be a \"good neighbor\" as it continues to invest in AI infrastructure throughout the country. ",
+      "date": "2026-01-13",
+      "id": 1768377601608,
+      "createdAt": "2026-01-14T08:00:01.608Z"
+    },
+    {
+      "title": "A consumer watchdog issued a warning about Google&#8217;s AI agent shopping protocol &#8212; Google says she&#8217;s wrong",
+      "text": "A consumer economics watchdog says Google's new Universal Commerce Protocol is ripe for misuse where consumers could pay more for items. Google denies this.",
+      "date": "2026-01-13",
+      "id": 1768377601647,
+      "createdAt": "2026-01-14T08:00:01.647Z"
+    },
+    {
+      "title": "Ring founder details the camera company&#8217;s &#8216;intelligent assistant&#8217; era",
+      "text": "AI is ushering in Ring’s next chapter, as the Amazon-owned video doorbell maker shifts toward becoming an “intelligent assistant.”",
+      "date": "2026-01-13",
+      "id": 1768377601654,
+      "createdAt": "2026-01-14T08:00:01.654Z"
+    },
+    {
+      "title": "Doctors think AI has a place in healthcare — but maybe not as a chatbot",
+      "text": "OpenAI and Anthropic have each launched healthcare-focused products over the last week.",
+      "date": "2026-01-13",
+      "id": 1768377601664,
+      "createdAt": "2026-01-14T08:00:01.664Z"
+    },
+    {
+      "title": "ElevenLabs CEO says the voice AI startup crossed $330M ARR last year",
+      "text": "The company said it took only five months to go from $200 million to $330 million in annual recurring revenue.",
+      "date": "2026-01-13",
+      "id": 1768377601672,
+      "createdAt": "2026-01-14T08:00:01.672Z"
+    },
+    {
+      "title": "The RAM shortage’s silver lining: Less talk about “AI PCs”",
+      "text": "",
+      "date": "2026-01-13",
+      "id": 1768377601679,
+      "createdAt": "2026-01-14T08:00:01.679Z"
+    },
+    {
+      "title": "Hegseth wants to integrate Musk’s Grok AI into military networks this month",
+      "text": "",
+      "date": "2026-01-13",
+      "id": 1768377601686,
+      "createdAt": "2026-01-14T08:00:01.686Z"
+    },
+    {
+      "title": "Microsoft vows to cover full power costs for energy-hungry AI data centers",
+      "text": "",
+      "date": "2026-01-13",
+      "id": 1768377601691,
+      "createdAt": "2026-01-14T08:00:01.691Z"
+    },
+    {
+      "title": "The Download: sodium-ion batteries and China&#8217;s bright tech future",
+      "text": "This is today&#8217;s edition of&#160;The Download,&#160;our weekday newsletter that provides a daily dose of what&#8217;s going on in the world of technology. Sodium-ion batteries are making their wa",
+      "date": "2026-01-13",
+      "id": 1768377601747,
+      "createdAt": "2026-01-14T08:00:01.747Z"
+    },
+    {
+      "title": "Mira Murati&#8217;s startup, Thinking Machines Lab, is losing two of its co-founders to OpenAI",
+      "text": "The abrupt change in personnel was in the works for several weeks, according to an OpenAI executive. ",
+      "date": "2026-01-15",
+      "id": 1768464005036,
+      "createdAt": "2026-01-15T08:00:05.036Z"
+    },
+    {
+      "title": "India&#8217;s Emversity doubles valuation as it scales workers AI can&#8217;t replace",
+      "text": "Emversity has raised $30 million in a new round as it scales job-ready training in India.",
+      "date": "2026-01-15",
+      "id": 1768464005042,
+      "createdAt": "2026-01-15T08:00:05.042Z"
+    },
+    {
+      "title": "Musk denies awareness of Grok sexual underage images as California AG launches probe",
+      "text": "The California attorney general has opened a formal investigation into Elon Musk's xAI after its chatbot Grok began generating nonconsensual sexual images of real women and even children.",
+      "date": "2026-01-14",
+      "id": 1768464005048,
+      "createdAt": "2026-01-15T08:00:05.048Z"
+    },
+    {
+      "title": "OpenAI signs deal, worth $10B, for compute from Cerebras",
+      "text": "The collaboration will help OpenAI's models deliver faster response times for more difficult or time-consuming tasks, the companies said.",
+      "date": "2026-01-14",
+      "id": 1768464005054,
+      "createdAt": "2026-01-15T08:00:05.054Z"
+    },
+    {
+      "title": "The multibillion-dollar AI security problem enterprises can&#8217;t ignore",
+      "text": "AI agents are supposed to make work easier. But&#160;they&#8217;re&#160;also creating a whole new category of security nightmares.&#160; As companies deploy AI-powered chatbots, agents, and copilots a",
+      "date": "2026-01-14",
+      "id": 1768464005060,
+      "createdAt": "2026-01-15T08:00:05.060Z"
+    },
+    {
+      "title": "A single click mounted a covert, multistage attack against Copilot",
+      "text": "",
+      "date": "2026-01-14",
+      "id": 1768464005066,
+      "createdAt": "2026-01-15T08:00:05.066Z"
+    },
+    {
+      "title": "Bandcamp bans purely AI-generated music from its platform",
+      "text": "",
+      "date": "2026-01-14",
+      "id": 1768464005072,
+      "createdAt": "2026-01-15T08:00:05.072Z"
+    },
+    {
+      "title": "The Download: next-gen nuclear, and the data center backlash",
+      "text": "This is today&#8217;s edition of&#160;The Download,&#160;our weekday newsletter that provides a daily dose of what&#8217;s going on in the world of technology. How next-generation nuclear reactors bre",
+      "date": "2026-01-14",
+      "id": 1768464005137,
+      "createdAt": "2026-01-15T08:00:05.137Z"
+    },
+    {
+      "title": "Data centers are amazing. Everyone hates them.",
+      "text": "Behold, the hyperscale data center!&#160; Massive structures, with thousands of specialized computer chips running in parallel to perform the complex calculations required by advanced AI models. A sin",
+      "date": "2026-01-14",
+      "id": 1768464005143,
+      "createdAt": "2026-01-15T08:00:05.143Z"
+    }
+  ],
+  "notes": [
+    {
+      "id": 1736700001,
+      "title": "AI Career Plan - 30 min/day",
+      "content": "# План продвижения в AI компании (30 мин/день)\n\n## Неделя 1-2: GitHub\n- Пн: Создать/обновить GitHub профиль на английском\n- Вт: Создать репо mcp-automation-toolkit\n- Ср: Секция \"What is this\"\n- Чт: Секция \"Features\"\n- Пт: Добавить скриншот\n- Сб: Секция \"Installation\"\n- Вс: Добавить topics\n\n## Неделя 3-4: LinkedIn\n- Профиль на английском\n- About секция\n- Skills: MCP, Claude, Python\n\n## Неделя 5-6: Twitter/X\n- Аккаунт, подписки на @AnthropicAI\n- Посты с демо\n\n## Неделя 7-8: Статья Dev.to\n- \"How I built 37 MCP servers\"\n\n## Твои преимущества:\n- 37+ MCP серверов\n- Реальный use-case (документы)\n- AI робот для детей\n- Video Transcriber",
+      "tags": [
+        "career",
+        "plan",
+        "anthropic"
+      ],
+      "date": "2025-01-12T12:00:00.000Z"
+    },
+    {
+      "id": 1736700002,
+      "title": "My AI Projects Portfolio",
+      "content": "# AI Projects Portfolio\n\n## 1. MCP-Hub\n- Personal productivity server\n- Notes, tasks, AI tools catalog\n- Tech: Node.js, MCP protocol, Render\n- Status: Working ✅\n\n## 2. Video Transcriber\n- Transcribes TikTok, Facebook, Instagram\n- Tech: Whisper API\n- Status: Working ✅\n\n## 3. AI Voice Robot for Kids\n- Voice-based AI companion\n- Tech: GROK API + Voice\n- Status: Working ✅\n\n## 4. Oracle VM + n8n\n- Always-on automation\n- Tech: Oracle Cloud, Docker\n- Status: Working ✅\n\n## 5. 37+ MCP Servers\n- AI orchestration system\n- Cost optimization\n- Status: Working ✅\n\n## 6. PDF Document Analyzer\n- RAG for technical docs\n- 177+ PDF files\n- Status: Working ✅\n\n## GitHub Priority:\n1. AI Voice Robot for Kids\n2. Video Transcriber\n3. MCP-Hub",
+      "tags": [
+        "portfolio",
+        "projects",
+        "github"
+      ],
+      "date": "2025-01-12T12:01:00.000Z"
+    },
+    {
+      "id": 1736700003,
+      "title": "GitHub Integration Architecture",
+      "content": "# GitHub Integration for MCP-Hub\n\n## Цель\nДобавить GitHub в mcp-hub чтобы с телефона создавать репо и файлы.\n\n## Архитектура\nТелефон → claude.ai → mcp-hub (Oracle VM) → GitHub API\n\n## Новые Tools\n- github_create_repo (name, description, private)\n- github_create_file (repo, path, content, message)\n- github_list_repos (limit)\n- github_get_file (repo, path, branch)\n\n## Шаги\n1. GitHub Token: github.com/settings/tokens → repo, read:user\n2. Добавить GITHUB_TOKEN в env\n3. Обновить server.js\n4. Тест\n\n## Время: ~1-2 часа",
+      "tags": [
+        "github",
+        "architecture",
+        "mcp-hub"
+      ],
+      "date": "2025-01-12T12:02:00.000Z"
+    },
+    {
+      "id": 1768262813877,
+      "title": "🎬 Transcription: Video",
+      "content": "**Язык:** Русский\n\n=== ТРАНСКРИБАЦИЯ/TRANSCRIPTION ===\n5 ошибок, которые стоили мне несколько миллионов при запуске бренда одежды.\n\nПервое: я создала мини-цех для пошива. Аренда, зарплаты швеям — всё это не нужно на начальном этапе. Минимальный расход — это главное. Сейчас я работаю с ателье. Это не мои швеи, у них нет зарплат, ответственности по заказам перед ними у меня тоже нет. Они работают со мной как партнеры: есть заказы — хорошо, нет заказов — они берут другие. Сейчас они работают только со мной, так как заказов хватает.\n\nВторое: создавать одежду для узкого сегмента людей. Например, платья только на худых или высоких. Когда я начала создавать кимоно, которое подходит всем, платья, которые хорошо сидят и на худых, и на бесформенных женщинах, заказы увеличились в разы.\n\nТретье: отшивать партии товара, когда не был проверен спрос. Партии товара у меня лежали, так как выяснилось, что, например, широкие плечи в жакете люди не хотят носить. Сейчас я запускаю новинку в одном экземпляре, пока не убеждаюсь, что это хит продаж. Мы шьем его под заказ. Это минимизирует расходы и позволяет зарабатывать, даже если у вас небольшие обороты.\n\nЧетвертое: дорогостоящие съемки. Много денег уходило на красивые съемки, которые, по сути, не продавали товар. Сейчас я контент делаю сама. Рилсы приносят основной доход, именно на них у меня упор. Плачу только контент-мейкеру и монтажеру.\n\nПятое: лишние сотрудники. Бухгалтер, дорогие помощники не нужны на начальных этапах. Только те сотрудники, которые приносят вам деньги: менеджер по продажам (если заказов уже много), монтажер рилсов (он помогает вам выпускать больше контента, а значит, больше зарабатывать).\n\n===",
+      "summary": "САММАРИ/SUMMARY ===\nАвтор делится опытом запуска бренда одежды и перечисляет пять дорогостоящих ошибок, которых стоит избегать новичкам:\n1.  **Открытие собственного цеха:** На старте выгоднее работать с ателье-партнерами, чтобы избежать расходов на аренду и зарплаты.\n2.  **Узкая целевая аудитория:** Одежда универсального кроя (например, кимоно) продается лучше, чем вещи только для худых или высоких.\n3.  **Пошив партий без теста:** Не стоит отшивать тираж до проверки спроса; безопаснее работать под заказ по одному образцу.\n4.  **Дорогие съемки:** Имиджевые фотосессии часто не окупаются. Эффективнее создавать контент самостоятельно, делая упор на Reels.\n5.  **Раздутый штат:** Нанимать нужно только тех, кто напрямую влияет на прибыль (менеджеры по продажам, монтажеры), избегая лишних административных расходов.",
+      "url": "https://www.facebook.com/share/r/1Bns8oXVmp/",
+      "date": "2026-01-13T00:06:53.857Z",
+      "tags": [
+        "transcription",
+        "video"
+      ],
+      "createdAt": "2026-01-13T00:06:53.877Z"
+    },
+    {
+      "id": 1768304867482,
+      "title": "🎬 Transcription: Video",
+      "content": "**Язык:** Литовский (Lithuanian)\n\nТак как аудио на литовском языке (не на русском и не на английском), ниже представлена транскрипция на языке оригинала и саммари на литовском.\n\n=== ТРАНСКРИБАЦИЯ/TRANSCRIPTION ===\n\nKaip pasiekti 10 000 eurų per mėnesį pajamų turint tik 100 eurų? Dropshippingas.\n\nIšsirenkam produktą, kurį pardavinėsim. Sukuriam tam produktui svetainę per „Shopify“, pasiėmę jų „free trial'ą“. Nusiperkam domeną. Susikuriam „Facebook“ reklamos paskyrą. Susikarpom video reklamas iš interneto turinio. Pasileidžiam tas reklamas su 10 „daily budget'u“ ir meldžiamės visiem dievam, kad kažkas pirktų.\n\nProcesas realiai ant tiek paprastas, bet, aišku, reikia kiekvieną žingsnį labai gerai atlikti. Todėl, jeigu norit išmokti visą šitą „e-commerce“ žaidimą, siūlau nueiti į mano „YouTube“ kanalą. Aš ten kiekvieną savaitę keliu naują video, kur detaliai paaiškinu, kaip kiekvieną šitą žingsnį atlikti.\n\n=== САММАРИ/",
+      "summary": "SUMMARY ===\n\nAutorius trumpai pristato „dropshipping“ verslo modelį kaip būdą uždirbti 10 000 eurų per mėnesį, turint vos 100 eurų pradinio kapitalo. Jis išvardija pagrindinius žingsnius: produkto pasirinkimas, svetainės kūrimas per „Shopify“ (naudojant nemokamą bandomąją versiją), domeno pirkimas, reklaminės medžiagos paruošimas ir „Facebook“ reklamų paleidimas su minimaliu biudžetu. Nors procesas atrodo paprastas, sėkmė priklauso nuo kokybiško atlikimo, todėl autorius kviečia žiūrovus į savo „YouTube“ kanalą, kur kas savaitę dalinasi detaliomis instrukcijomis.",
+      "url": "https://vm.tiktok.com/ZNRh4PQpy/",
+      "date": "2026-01-13T11:47:47.462Z",
+      "tags": [
+        "transcription",
+        "video"
+      ],
+      "createdAt": "2026-01-13T11:47:47.482Z"
+    },
+    {
+      "id": 1768305082969,
+      "title": "Dropshipping 2025 - Полный Гайд",
+      "content": "# Дропшиппинг 2025 - Полный Пошаговый Гайд\n\n## Статистика рынка\n- Объём: $435 млрд (2025)\n- Рост: 22% CAGR\n- Маржа: 20-30%\n\n## 7 ШАГОВ К ЗАПУСКУ\n\n### ШАГ 1: Выбор ниши\n- Google Trends - анализ трендов\n- TikTok #TikTokMadeMeBuyIt\n- Товары $10-50 с маржой 2-3x\n- Решение проблемы > \"красивый товар\"\n\n### ШАГ 2: Shopify магазин\n- shopify.com/free-trial\n- 3 дня бесплатно, потом $1/мес (3 мес)\n- Тема: Dawn (бесплатная)\n- Страницы: О нас, FAQ, Возврат\n\n### ШАГ 3: Домен\n- Shopify: ~$14/год\n- Или Namecheap\n- Формат: brandname.com\n- SSL включён автоматически\n\n### ШАГ 4: Поставщик\n- DSers - бесплатно, AliExpress\n- Spocket - $24/мес, US/EU склады\n- CJ Dropshipping - брендирование\n- ВАЖНО: Тестовые заказы перед запуском!\n\n### ШАГ 5: Facebook Ads настройка\n- business.facebook.com\n- Создать Ad Account (USD!)\n- Установить Facebook Pixel\n- Подключить Conversions API\n\n### ШАГ 6: Креативы\n- Видео 9:16, 15-30 сек\n- UGC-стиль работает лучше\n- Инструменты: CapCut, Canva\n- Hook в первые 3 секунды\n\n### ШАГ 7: Запуск рекламы\n- Цель: Conversions → Purchase\n- Бюджет: €10/день старт\n- Структура: 1 кампания → 3-5 ad sets → 2 креатива\n- Broad targeting работает в 2025!\n\n## МЕТРИКИ\n- CTR > 1.5% = хорошо\n- CPC < $1.50 = нормально\n- ROAS > 2x = прибыльно\n\n## БЮДЖЕТ СТАРТА\n- Shopify 3 мес: €3\n- Домен: €12-15\n- Тесты: €15-30\n- Реклама: €50-70\n- **ИТОГО: €80-118**\n\n## TIMELINE: 7 дней до запуска\nДень 1-2: Ниша + Продукт\nДень 3-4: Shopify + Домен\nДень 5: Поставщик\nДень 6: Креативы\nДень 7: ЗАПУСК!\n\n---\nHTML-версия: /mnt/user-data/outputs/dropshipping-guide.html\nСоздано: 2025",
+      "tags": [],
+      "date": "2026-01-13T11:51:22.954Z",
+      "createdAt": "2026-01-13T11:51:22.969Z"
+    },
+    {
+      "id": 1768307948760,
+      "title": "Инструкция: Деплой сайта на GitHub Pages",
+      "content": "# 📘 Инструкция: Деплой статического сайта на GitHub Pages\n\n## ✅ Что работает\n\n**Финальная ссылка:** https://tikserziku.github.io/dropshipping-guide/\n\n---\n\n## 🚀 Пошаговый процесс\n\n### Шаг 1: Создать репозиторий\n```\nMCP:github_create_repo → name: \"my-site\"\n```\n\n### Шаг 2: Загрузить index.html\n```\nMCP:github_create_file → repo: \"my-site\", path: \"index.html\", content: \"...\"\n```\n\n### Шаг 3: Создать файл .nojekyll (ВАЖНО!)\n```\nMCP:github_create_file → repo: \"my-site\", path: \".nojekyll\", content: \"\"\n```\n⚠️ Этот пустой файл отключает Jekyll и позволяет GitHub Pages работать с обычным HTML.\n\n### Шаг 4: Включить GitHub Pages (в браузере)\n1. Settings → Pages\n2. Source: **Deploy from a branch**\n3. Branch: **main** / **/ (root)**\n4. Save\n\n### Шаг 5: Подождать 1-3 минуты\nСайт появится по адресу: `https://USERNAME.github.io/REPO-NAME/`\n\n---\n\n## ⚠️ Частые проблемы и решения\n\n### Проблема 1: 404 ошибка\n**Причина:** GitHub Pages не включён или неправильные настройки\n**Решение:** \n- Проверить Settings → Pages\n- Source должен быть \"Deploy from a branch\"\n- Branch: main, Folder: / (root)\n\n### Проблема 2: GitHub Actions workflow падает (❌)\n**Причина:** Нет прав на деплой или конфликт workflows\n**Решение:**\n- Удалить все файлы из `.github/workflows/`\n- Использовать простой \"Deploy from a branch\" вместо Actions\n- НЕ использовать GitHub Actions для простых HTML сайтов\n\n### Проблема 3: CSS/стили не работают\n**Причина:** Jekyll обрабатывает файлы и ломает пути\n**Решение:** Создать файл `.nojekyll` в корне репозитория\n\n### Проблема 4: Сайт не обновляется\n**Причина:** Кэш браузера или деплой не завершён\n**Решение:**\n- Очистить кэш (Ctrl+Shift+R)\n- Подождать 2-3 минуты\n- Проверить Actions — должна быть зелёная галочка\n\n### Проблема 5: Render MCP не работает\n**Причина:** Workspace не выбран, API ошибки\n**Решение:** GitHub Pages — более надёжная альтернатива для статики\n\n---\n\n## 📁 Минимальная структура репозитория\n\n```\nmy-site/\n├── index.html      ← главная страница\n├── .nojekyll       ← пустой файл (отключает Jekyll)\n├── style.css       ← опционально\n└── script.js       ← опционально\n```\n\n---\n\n## 🔧 Полезные MCP команды\n\n```\n# Список репозиториев\nMCP:github_list_repos\n\n# Прочитать файл\nMCP:github_get_file → repo, path\n\n# Создать файл\nMCP:github_create_file → repo, path, content\n\n# Удалить файл\nMCP:github_delete_file → repo, path\n```\n\n---\n\n## 💡 Лучшие практики\n\n1. **Всегда создавать .nojekyll** — избавляет от 90% проблем\n2. **Использовать \"Deploy from a branch\"** — проще чем Actions\n3. **Файл должен называться index.html** — не home.html, не main.html\n4. **Ждать 2-3 минуты** после любых изменений\n5. **Не использовать кириллицу в именах файлов**\n\n---\n\n## 📊 Сравнение методов деплоя\n\n| Метод | Сложность | Надёжность | Рекомендация |\n|-------|-----------|------------|--------------|\n| Deploy from branch | ⭐ Легко | ✅ Высокая | ДА |\n| GitHub Actions | ⭐⭐⭐ Сложно | ⚠️ Средняя | Только для сборки |\n| Render.com | ⭐⭐ Средне | ❌ Проблемы с MCP | НЕТ |\n\n---\n\nСоздано: 13.01.2026\nПроект: dropshipping-guide\nСтатус: ✅ Работает",
+      "tags": [],
+      "date": "2026-01-13T12:39:08.742Z",
+      "createdAt": "2026-01-13T12:39:08.760Z"
+    },
+    {
+      "id": 1768318795651,
+      "title": "🎬 Transcription: Video",
+      "content": "There is a reason this is the most installed Claude Code add-on. It is called the Front-end Design Skill, and it changes how Claude approaches UI. And here are just some examples I got from using this skill.\nThe trick, however, is to use Plan mode. Start there and then let Claude ask you questions about how you want this front-end to look. It will prompt you with alternatives so you can nail down exactly what you want. The difference is pretty much night and day.\nTo install, just open Claude Code and type `/plugin`. Then you will see Front-end Design at the very top. Now, while you're there, you can even check what else is available because front-end is just the start.\nThere are skills for all kinds of workflows, and you can even add more. I'm testing more of these add-ons, so we'll see what actually is useful.",
+      "summary": "The speaker reviews the \"Front-end Design Skill,\" a popular add-on for Claude Code that significantly improves user interface generation. He recommends using \"Plan mode\" to allow Claude to ask clarifying questions and offer design alternatives before generating code. The installation process involves typing `/plugin` in Claude Code, where users can also explore other available workflow skills.",
+      "url": "https://vm.tiktok.com/ZNRhb3T2p/",
+      "date": "2026-01-13T15:39:55.635Z",
+      "tags": [
+        "transcription",
+        "video"
+      ],
+      "createdAt": "2026-01-13T15:39:55.651Z"
+    },
+    {
+      "id": 1768318946237,
+      "title": "Claude Code Plugins & Skills - Полный Каталог",
+      "content": "# 🔌 Claude Code Plugins & Skills\n\n## 📦 Установка плагинов\n\nВ Claude Code набери:\n```\n/plugin\n```\nИли через CLI:\n```bash\nnpx claude-plugins install @anthropics/claude-code-plugins/frontend-design\n```\n\n---\n\n## ⭐ ТОП ОФИЦИАЛЬНЫЕ SKILLS (от Anthropic)\n\n| Skill | Описание | Установка |\n|-------|----------|-----------|\n| **frontend-design** | Красивый UI/UX, production-grade дизайн | `/plugin` → Frontend Design |\n| **docx** | Создание/редактирование Word документов | Встроен |\n| **pdf** | Работа с PDF файлами | Встроен |\n| **pptx** | Создание презентаций | Встроен |\n| **xlsx** | Работа с Excel | Встроен |\n| **skill-creator** | Создание своих skills | Встроен |\n| **mcp-builder** | Создание MCP серверов | Встроен |\n\n---\n\n## 🔥 ПОПУЛЯРНЫЕ COMMUNITY PLUGINS\n\n### 🎨 Frontend & Design\n| Plugin | Описание |\n|--------|----------|\n| **frontend-design** | Профессиональный UI без \"AI-слопа\" |\n| **UX-design** | Wireframes, user flows, accessibility |\n| **component-design** | Дизайн-системы, UI компоненты |\n\n### 🔧 DevOps & Infrastructure\n| Plugin | Описание |\n|--------|----------|\n| **supabase-pack** | Database, auth, storage, edge functions |\n| **vercel-pack** | Deployments, preview environments |\n| **sentry-pack** | Error tracking, monitoring |\n| **devops-automation-pack** | CI/CD автоматизация |\n\n### 🔒 Security & Code Quality\n| Plugin | Описание |\n|--------|----------|\n| **code-review** | 5 параллельных агентов для ревью PR |\n| **security-skills** | Code auditing, vulnerability scanning |\n| **test-driven-development** | TDD workflow |\n\n### 📊 Data & API\n| Plugin | Описание |\n|--------|----------|\n| **api-design** | REST и GraphQL дизайн |\n| **data-skills** | Анализ, визуализация, отчёты |\n| **software-architecture** | Clean Architecture, SOLID, DDD |\n\n### 🤖 Automation & Agents\n| Plugin | Описание |\n|--------|----------|\n| **compound-engineering** | 27 агентов + 20 команд + 12 skills |\n| **Claude Squad** | Управление множеством агентов |\n| **Swarm SDK** | Swarms of specialized agents |\n\n---\n\n## 🛠️ ПОЛЕЗНЫЕ ИНСТРУМЕНТЫ\n\n| Инструмент | Описание |\n|------------|----------|\n| **Memory MCP** | Persistent memory через knowledge graph |\n| **GitHub MCP Server** | Интеграция с GitHub (repos, PRs, issues) |\n| **Claude Context MCP** | Semantic search по коду |\n| **Playwright Automation** | Тестирование веб-приложений |\n\n---\n\n## 📚 РЕСУРСЫ И КАТАЛОГИ\n\n| Сайт | Описание |\n|------|----------|\n| [claude-plugins.dev](https://claude-plugins.dev) | Официальный реестр плагинов |\n| [claudecodeplugins.io](https://claudecodeplugins.io) | 548 skills, туториалы |\n| [skillsmp.com](https://skillsmp.com) | Marketplace для skills |\n| [github.com/anthropics/claude-code](https://github.com/anthropics/claude-code/blob/main/plugins/README.md) | Официальная документация |\n\n---\n\n## 💡 СОВЕТЫ ПО ИСПОЛЬЗОВАНИЮ\n\n### Plan Mode (из видео)\n1. Используй **Plan mode** перед генерацией\n2. Claude задаст вопросы о дизайне\n3. Предложит альтернативы\n4. Результат намного лучше!\n\n### Структура плагина\n```\nmy-plugin/\n├── .claude-plugin/\n│   └── plugin.json\n├── commands/        # Slash команды\n├── agents/          # AI агенты\n├── skills/          # Agent skills\n├── hooks/           # Event handlers\n└── .mcp.json        # MCP конфиг\n```\n\n---\n\n## 🎯 ЧТО УСТАНОВИТЬ ПЕРВЫМ\n\n1. ⭐ **frontend-design** — для красивого UI\n2. ⭐ **code-review** — автоматический ревью PR\n3. ⭐ **software-architecture** — для проектирования\n4. ⭐ **supabase-pack** — если работаешь с Supabase\n5. ⭐ **compound-engineering** — мега-набор инструментов\n\n---\n\nСоздано: 13.01.2026\nИсточник: TikTok видео + web search",
+      "tags": [],
+      "date": "2026-01-13T15:42:26.208Z",
+      "createdAt": "2026-01-13T15:42:26.237Z"
+    },
+    {
+      "id": 1768367254377,
+      "title": "🎬 Transcription: Video",
+      "content": "Я просто хочу показать вам, насколько невероятным стал искусственный интеллект для создания контента всего за последние несколько недель. Итак, я нахожусь в Weavy и собираюсь превратить эту единственную фотографию в шесть совершенно разных 3D-видео.\nНикаких съемок, никакой ручной анимации. Вы просто предоставляете свою модель, свой продукт, выстраиваете рабочий процесс на основе узлов (нодов), нажимаете «запустить», и вот здесь начинается самое интересное.\nЯ попросил ChatGPT выступить в роли моего ИИ-ассистента по производству. Он проанализировал это изображение и создал все движения камеры: наезды (dolly in), панорамирование, пролеты по дуге. Затем я поместил всё это в массив внутри Weavy, что позволило мне запустить все эти движения камеры одновременно.\nЯ отправил весь проект в Kling 2.5, и вот — ваши кинематографичные 3D-кадры, полученные из одной фотографии. Самое безумное здесь то, что вы настраиваете это один раз, а затем запускаете весь процесс одним кликом. Хотите получить этот рабочий процесс? Напишите слово «shotlist».",
+      "summary": "Автор демонстрирует мощный метод создания контента с помощью ИИ, превращая одну фотографию в шесть различных 3D-видео без реальных съемок. Процесс включает использование платформы Weavy для построения узлового рабочего процесса, ChatGPT для автоматического создания сценариев движения камеры (наезды, панорамы) и нейросети Kling 2.5 для финальной генерации. Главное преимущество — возможность настроить систему один раз и генерировать множество кинематографичных кадров в один клик.",
+      "url": "https://vm.tiktok.com/ZNRhnH71v/",
+      "date": "2026-01-14T05:07:34.353Z",
+      "tags": [
+        "transcription",
+        "video"
+      ],
+      "createdAt": "2026-01-14T05:07:34.377Z"
+    },
+    {
+      "id": 1768367408948,
+      "title": "FIX: yt-dlp TikTok/YouTube errors on Oracle VM",
+      "content": "# 🔧 Инструкция по исправлению yt-dlp на Oracle VM\n\n## Проблема\n```\nERROR: [TikTok] Unable to extract webpage video data\nERROR: [YouTube] Sign in to confirm you're not a bot\n```\n\n## Причина\nyt-dlp устаревает быстро, TikTok/YouTube часто меняют API.\n\n## Решение: Установка nightly build\n\n### Шаг 1: Проверить текущую версию\n```bash\n/usr/bin/python3 -m yt_dlp --version\n# или\nyt-dlp --version\n```\n\n### Шаг 2: Найти последний nightly релиз\n```bash\ncurl -s https://api.github.com/repos/yt-dlp/yt-dlp-nightly-builds/releases/latest | grep tag_name\n```\n\n### Шаг 3: Скачать standalone бинарник\n```bash\n# Получить версию\nVERSION=$(curl -s https://api.github.com/repos/yt-dlp/yt-dlp-nightly-builds/releases/latest | grep -oP '\"tag_name\": \"\\K[^\"]+')\n\n# Скачать бинарник\ncurl -L -o /tmp/yt-dlp-nightly \"https://github.com/yt-dlp/yt-dlp-nightly-builds/releases/download/${VERSION}/yt-dlp\"\n\n# Сделать исполняемым\nchmod +x /tmp/yt-dlp-nightly\n\n# Проверить версию\n/tmp/yt-dlp-nightly --version\n```\n\n### Шаг 4: Установить в систему\n```bash\nsudo cp /tmp/yt-dlp-nightly /usr/local/bin/yt-dlp\n```\n\n### Шаг 5: Обновить real_downloader.py\nФайл: `/home/ubuntu/transcriber/real_downloader.py`\n\nФункция `get_ytdlp_path()` должна иметь приоритет:\n```python\ndef get_ytdlp_path():\n    # 1. Standalone бинарник (nightly - приоритет!)\n    if os.path.exists('/usr/local/bin/yt-dlp'):\n        return '/usr/local/bin/yt-dlp'\n    \n    # 2. ~/.local/bin\n    local_bin = os.path.expanduser('~/.local/bin/yt-dlp')\n    if os.path.exists(local_bin):\n        return local_bin\n    \n    # 3. Fallback на python module\n    return [sys.executable, '-m', 'yt_dlp']\n```\n\n### Шаг 6: Перезапустить transcriber\n```bash\n# Найти PID\nps aux | grep server_app.py\n\n# Убить старый процесс\nsudo kill -9 <PID>\n\n# Запустить заново\ncd /home/ubuntu/transcriber && nohup python3 server_app.py >> transcriber.log 2>&1 &\n\n# Проверить\nsudo lsof -i :5000\n```\n\n## Быстрый однострочник для обновления\n```bash\nVERSION=$(curl -s https://api.github.com/repos/yt-dlp/yt-dlp-nightly-builds/releases/latest | grep -oP '\"tag_name\": \"\\K[^\"]+') && curl -L -o /tmp/yt-dlp \"https://github.com/yt-dlp/yt-dlp-nightly-builds/releases/download/${VERSION}/yt-dlp\" && chmod +x /tmp/yt-dlp && sudo cp /tmp/yt-dlp /usr/local/bin/yt-dlp && yt-dlp --version\n```\n\n## Проверка после исправления\n```bash\n# Версии должны отличаться:\n/usr/local/bin/yt-dlp --version      # nightly (новее)\npython3 -m yt_dlp --version          # pip (старая)\n\n# Тест TikTok\n/usr/local/bin/yt-dlp -f best \"https://vm.tiktok.com/...\" -o /tmp/test.mp4\n```\n\n## Важно помнить\n- pip install yt-dlp НЕ работает с nightly (проблемы с packaging.licenses)\n- Standalone бинарник - самый надёжный способ\n- TikTok ломается каждые 1-2 недели, нужно обновлять регулярно\n- YouTube требует `--extractor-args 'youtube:player_client=android,mweb,web'`\n\n## Автоматизация (cron)\n```bash\n# Добавить в crontab для еженедельного обновления\n0 3 * * 0 VERSION=$(curl -s https://api.github.com/repos/yt-dlp/yt-dlp-nightly-builds/releases/latest | grep -oP '\"tag_name\": \"\\K[^\"]+') && curl -L -o /tmp/yt-dlp \"https://github.com/yt-dlp/yt-dlp-nightly-builds/releases/download/${VERSION}/yt-dlp\" && chmod +x /tmp/yt-dlp && sudo cp /tmp/yt-dlp /usr/local/bin/yt-dlp\n```\n\n---\nДата создания: 2026-01-14\nАвтор: Claude (практический опыт)\n",
+      "tags": [],
+      "date": "2026-01-14T05:10:08.929Z",
+      "createdAt": "2026-01-14T05:10:08.948Z"
+    },
+    {
+      "id": 1768368307628,
+      "title": "Agent Mode - автоматическое выполнение задач на Oracle VM",
+      "content": "# 🤖 Agent Mode - Автоматическое выполнение задач\n\n## Описание\nAgent Mode позволяет выполнять цепочки команд автоматически без промежуточных подтверждений.\nВсе шаги выполняются последовательно, результат возвращается в конце.\n\n## API Endpoints\n\n### Список рецептов\n```\nGET http://localhost:5001/agent/recipes\n```\n\n### Запустить рецепт\n```\nPOST http://localhost:5001/agent/run\nBody: {\"recipe\": \"recipe_name\"}\n```\n\n### Выполнить shell команду\n```\nPOST http://localhost:5001/agent/shell\nBody: {\"command\": \"ls -la\", \"timeout\": 60}\n```\n\n### Выполнить цепочку команд\n```\nPOST http://localhost:5001/agent/chain\nBody: {\"steps\": [{\"type\": \"shell\", \"cmd\": \"...\"}, {\"type\": \"python\", \"code\": \"...\"}]}\n```\n\n## Доступные рецепты\n\n| Recipe | Описание | Шаги |\n|--------|----------|------|\n| `update_ytdlp` | Обновить yt-dlp до nightly | 5 |\n| `restart_transcriber` | Перезапустить Transcriber | 5 |\n| `check_services` | Проверить все сервисы | 3 |\n| `backup_to_github` | Бэкап всех сервисов | 1 |\n| `system_cleanup` | Очистка системы | 5 |\n| `fix_transcriber` | Полный фикс Transcriber | 7 |\n\n## Добавление новых рецептов\n\nФайл: `/home/ubuntu/agent_mode.py`\n\n```python\nRECIPES = {\n    \"my_recipe\": {\n        \"name\": \"Моя задача\",\n        \"steps\": [\n            {\"type\": \"shell\", \"cmd\": \"echo 'Step 1'\"},\n            {\"type\": \"shell\", \"cmd\": \"ls -la\"},\n            {\"type\": \"python\", \"code\": \"print('Hello from Python')\"}\n        ]\n    }\n}\n```\n\nПосле изменения перезапустить:\n```bash\nsudo systemctl restart grok-admin-api\n```\n\n## Безопасность\n\n### Заблокированные команды:\n- `rm -rf /`\n- `mkfs`\n- `shutdown`, `reboot`\n- `dd if=/dev/zero`\n\n### Разрешённые команды:\n`ls`, `cat`, `grep`, `find`, `curl`, `wget`, `python3`, `pip`, `npm`,\n`systemctl`, `journalctl`, `ps`, `git`, `docker`, `ffmpeg`, `yt-dlp`\n\n## Логи\n```\n/home/ubuntu/logs/agent.log\n```\n\n## Использование через Claude\n\nКогда работаешь с телефона, просто скажи:\n- \"Запусти fix_transcriber\" → агент выполнит все 7 шагов автоматически\n- \"Обнови yt-dlp\" → агент скачает и установит nightly build\n- \"Проверь сервисы\" → агент проверит статус всех grok-* сервисов\n\n---\nСоздано: 2026-01-14\nФайлы:\n- /home/ubuntu/agent_mode.py - движок агента\n- /home/ubuntu/grok-voice/oracle-admin-api.py - API endpoints\n",
+      "tags": [],
+      "date": "2026-01-14T05:25:07.611Z",
+      "createdAt": "2026-01-14T05:25:07.628Z"
+    },
+    {
+      "id": 1768371034563,
+      "title": "GitHub Showcase: claude-ai-ecosystem",
+      "content": "## Created Repository: https://github.com/tikserziku/claude-ai-ecosystem\n\n### Purpose\nProfessional showcase of AI ecosystem for:\n- Anthropic team (Hasher, others)\n- Community attention (stars)\n- Potential collaborators\n\n### Files Created\n1. **README.md** - Main landing page with:\n   - Hero section with badges\n   - Architecture diagram\n   - Features overview\n   - Services table\n   - Cost optimization summary\n   - Contact info\n\n2. **docs/ARCHITECTURE.md** - Deep dive:\n   - Infrastructure specs\n   - Network architecture\n   - Agent v3.0 structure\n   - Data flow diagrams\n\n3. **docs/MCP-SERVERS.md** - Catalog:\n   - 39+ servers documented\n   - Tool descriptions\n   - Configuration examples\n\n4. **docs/COST-OPTIMIZATION.md** - Strategy:\n   - Problem/solution\n   - Task routing logic\n   - Real results (90% savings)\n   - Implementation guide\n\n5. **docs/CHANGELOG.md** - History:\n   - Version timeline\n   - Feature releases\n   - Uptime record\n\n6. **docs/LESSONS-LEARNED.md** - Expertise:\n   - MCP development tips\n   - Security practices\n   - Debugging guides\n   - Scaling strategy\n\n7. **GET-ACCESS.md** - Contact:\n   - Access request process\n   - What's available\n   - FAQ\n\n### Key Points for Anthropic\n- Real production system (17+ weeks uptime)\n- 39+ MCP servers\n- 90% cost savings via routing\n- Agent v3.0 with 19 recipes\n- Video transcription working",
+      "tags": [],
+      "date": "2026-01-14T06:10:34.546Z",
+      "createdAt": "2026-01-14T06:10:34.563Z"
+    },
+    {
+      "id": 1768371512420,
+      "title": "Changelog Agent v1.0 - Auto Versioning",
+      "content": "## Changelog Agent v1.0 Created\n\n### Location\n/home/ubuntu/changelog_agent.py\n\n### Features\n- Auto-track features from messages (RU/EN)\n- Semver versioning (major/minor/patch)\n- Category detection\n- GitHub integration\n- Release notes generation\n\n### Commands\n```bash\npython3 changelog_agent.py add \"description\"\npython3 changelog_agent.py pending\npython3 changelog_agent.py release [major|minor|patch]\npython3 changelog_agent.py track \"message\"\npython3 changelog_agent.py stats\n```\n\n### Auto-track Triggers\n- \"добавил\", \"создал\", \"реализовал\" → feature\n- \"исправил\", \"пофиксил\", \"fix\" → bugfix\n- \"улучшил\", \"оптимизировал\" → improvement\n- \"new feature:\", \"implemented\" → feature\n\n### Integrated into\n- oracle-admin-api.py (endpoints added)\n- Needs restart: sudo systemctl restart grok-admin-api\n\n### GitHub Repo\nhttps://github.com/tikserziku/claude-ai-ecosystem\nCloned to: /home/ubuntu/claude-ai-ecosystem",
+      "tags": [],
+      "date": "2026-01-14T06:18:32.405Z",
+      "createdAt": "2026-01-14T06:18:32.420Z"
+    },
+    {
+      "id": 1768372338029,
+      "title": "Oracle CLI v1.0 - Full Code",
+      "content": "## Oracle CLI v1.0\nLocation: /home/ubuntu/oracle-cli.py\nSymlink: sudo ln -s /home/ubuntu/oracle-cli.py /usr/local/bin/oracle\n\n```python\n#!/usr/bin/env python3\n\"\"\"\nOracle CLI v1.0 - Command Line for Oracle VM\n\nUsage:\n    oracle status              - All services health\n    oracle restart <service>   - Restart service  \n    oracle logs <service> [n]  - Show logs\n    oracle run <recipe>        - Run recipe\n    oracle recipes             - List recipes\n    oracle add \"desc\"          - Add changelog feature\n    oracle pending             - Show pending features\n    oracle release [type]      - Release version\n    oracle health              - Quick health check\n    oracle top                 - Top processes\n\"\"\"\n\nimport sys, json, requests, socket, subprocess\n\nAPI = \"http://localhost:5001\"\n\nclass C:\n    G = '\\033[92m'\n    R = '\\033[91m'\n    B = '\\033[1m'\n    E = '\\033[0m'\n\ndef ok(m): print(f\"{C.G}OK {m}{C.E}\")\ndef err(m): print(f\"{C.R}ERR {m}{C.E}\")\ndef inf(m): print(f\"INFO {m}\")\n\ndef get(ep):\n    try: return requests.get(f\"{API}{ep}\", timeout=30).json()\n    except: return {\"error\": \"API unavailable\"}\n\ndef post(ep, data=None):\n    try: return requests.post(f\"{API}{ep}\", json=data or {}, timeout=60).json()\n    except: return {\"error\": \"API unavailable\"}\n\ndef cmd_status():\n    r = get(\"/diagnose/all\")\n    if \"error\" in r: err(r[\"error\"]); return\n    print(f\"\\n{C.B}SERVICES{C.E}\")\n    for s in r.get(\"services\", []):\n        i = \"+\" if s[\"healthy\"] else \"-\"\n        print(f\"  [{i}] {s['name']:<25} {s['active']}/{s['sub']}\")\n    print(f\"\\n  {r.get('healthy',0)}/{r.get('total',0)} healthy\")\n\ndef cmd_restart(svc):\n    if not svc.startswith(\"grok-\"): svc = f\"grok-{svc}\"\n    inf(f\"Restarting {svc}...\")\n    r = post(\"/services/restart\", {\"service\": svc})\n    ok(f\"{svc} restarted\") if r.get(\"success\") else err(r.get(\"error\",\"Failed\"))\n\ndef cmd_logs(svc, n=50):\n    if not svc.startswith(\"grok-\"): svc = f\"grok-{svc}\"\n    r = post(\"/services/logs\", {\"service\": svc, \"lines\": int(n)})\n    print(r.get(\"logs\", r.get(\"error\", \"No logs\")))\n\ndef cmd_recipes():\n    sys.path.insert(0, '/home/ubuntu')\n    try:\n        from agent_mode import RECIPES\n        print(f\"\\n{C.B}RECIPES{C.E}\")\n        for n, rc in RECIPES.items():\n            print(f\"  {n:<25} {rc['name']}\")\n    except: err(\"Agent not available\")\n\ndef cmd_run(recipe):\n    sys.path.insert(0, '/home/ubuntu')\n    try:\n        from agent_mode import agent\n        inf(f\"Running: {recipe}\")\n        r = agent.run_recipe(recipe)\n        ok(\"Done\") if r.get(\"success\") else err(\"Failed\")\n        print(r.get(\"output\", \"\"))\n    except Exception as e: err(str(e))\n\ndef cmd_add(desc):\n    sys.path.insert(0, '/home/ubuntu')\n    try:\n        from changelog_agent import changelog\n        r = changelog.add_feature(desc)\n        if r.get(\"success\"):\n            f = r[\"feature\"]\n            ok(f\"Added: {f['description']}\")\n            print(f\"  Type: {f['change_type']}, Queue: {r['queue_size']}\")\n        else: err(\"Failed\")\n    except Exception as e: err(str(e))\n\ndef cmd_pending():\n    sys.path.insert(0, '/home/ubuntu')\n    try:\n        from changelog_agent import changelog\n        r = changelog.list_pending()\n        if not r.get(\"pending\"): inf(\"No pending\"); return\n        print(f\"\\n{C.B}PENDING ({len(r['pending'])}){C.E}\")\n        for f in r[\"pending\"]:\n            print(f\"  [{f['change_type']}] {f['description']}\")\n    except Exception as e: err(str(e))\n\ndef cmd_release(bump=None):\n    sys.path.insert(0, '/home/ubuntu')\n    try:\n        from changelog_agent import changelog\n        r = changelog.release(bump)\n        if r.get(\"success\"): ok(f\"Released v{r['version']} ({r['features_count']} features)\")\n        else: err(r.get(\"error\", \"No features\"))\n    except Exception as e: err(str(e))\n\ndef cmd_version():\n    sys.path.insert(0, '/home/ubuntu')\n    try:\n        from changelog_agent import changelog\n        print(f\"v{changelog.get_version_string()}\")\n    except: err(\"N/A\")\n\ndef cmd_health():\n    print(f\"\\n{C.B}HEALTH{C.E}\")\n    r = get(\"/health\")\n    print(f\"  API: {'UP' if 'error' not in r else 'DOWN'}\")\n    r = get(\"/diagnose/all\")\n    if \"error\" not in r: print(f\"  Services: {r.get('healthy',0)}/{r.get('total',0)}\")\n    for p,n in [(5000,\"Transcriber\"),(5001,\"API\"),(3335,\"Portal\")]:\n        try:\n            s = socket.socket(); s.settimeout(1)\n            up = s.connect_ex(('localhost',p)) == 0; s.close()\n            print(f\"  {n}: {'UP' if up else 'DOWN'}\")\n        except: pass\n\ndef cmd_top():\n    r = subprocess.run([\"ps\",\"aux\",\"--sort=-%cpu\"], capture_output=True, text=True)\n    for l in r.stdout.split('\\n')[:11]: print(l[:80])\n\ndef cmd_help():\n    print(__doc__)\n\ndef main():\n    if len(sys.argv) < 2: cmd_help(); return\n    cmd, args = sys.argv[1].lower(), sys.argv[2:]\n    cmds = {\n        \"status\": cmd_status, \n        \"restart\": lambda: cmd_restart(args[0]) if args else err(\"Need svc\"),\n        \"logs\": lambda: cmd_logs(args[0], args[1] if len(args)>1 else 50) if args else err(\"Need svc\"),\n        \"recipes\": cmd_recipes, \n        \"run\": lambda: cmd_run(args[0]) if args else err(\"Need recipe\"),\n        \"add\": lambda: cmd_add(\" \".join(args)) if args else err(\"Need desc\"),\n        \"pending\": cmd_pending, \n        \"release\": lambda: cmd_release(args[0] if args else None),\n        \"version\": cmd_version, \n        \"health\": cmd_health, \n        \"top\": cmd_top, \n        \"help\": cmd_help,\n    }\n    if cmd in cmds:\n        try: cmds[cmd]()\n        except Exception as e: err(str(e))\n    else: err(f\"Unknown: {cmd}\")\n\nif __name__ == \"__main__\":\n    main()\n```\n\n## Installation\n```bash\nchmod +x /home/ubuntu/oracle-cli.py\nsudo ln -s /home/ubuntu/oracle-cli.py /usr/local/bin/oracle\n```\n\n## Test\n```bash\noracle status\noracle health\noracle recipes\n```",
+      "tags": [],
+      "date": "2026-01-14T06:32:18.004Z",
+      "createdAt": "2026-01-14T06:32:18.029Z"
+    },
+    {
+      "id": 1768372443566,
+      "title": "CLI + Changelog Setup Complete",
+      "content": "## Summary: CLI + Changelog Agent + GitHub\n\n### Created Today\n\n1. **Oracle CLI v1.0** (`/home/ubuntu/oracle-cli.py`)\n   - Scriptable commands for VM management\n   - Works without Claude\n   - Commands: status, restart, logs, recipes, run, add, release, health\n   - Install: `sudo ln -s /home/ubuntu/oracle-cli.py /usr/local/bin/oracle`\n\n2. **Changelog Agent v1.0** (`/home/ubuntu/changelog_agent.py`)  \n   - Auto-detect features from natural language\n   - Semver versioning (major/minor/patch)\n   - GitHub integration\n   - Commands: add, pending, release, track, stats\n\n3. **GitHub Showcase** (https://github.com/tikserziku/claude-ai-ecosystem)\n   - Professional documentation\n   - Architecture diagrams\n   - Cost optimization guide\n   - All tools documented\n\n### Files to Install\n\n```bash\n# Make CLI executable\nchmod +x /home/ubuntu/oracle-cli.py\nchmod +x /home/ubuntu/changelog_agent.py\n\n# Create symlink\nsudo ln -s /home/ubuntu/oracle-cli.py /usr/local/bin/oracle\n\n# Test\noracle help\noracle status\noracle recipes\n```\n\n### Restart admin-api to enable changelog endpoints\n\n```bash\nsudo systemctl restart grok-admin-api\n```\n\n### Workflow\n\n1. Work on something → Tell Claude naturally\n2. Claude tracks: `oracle add \"description\"` \n3. Accumulated features → `oracle release minor`\n4. Auto: CHANGELOG.md + VERSION.json + GitHub push",
+      "tags": [],
+      "date": "2026-01-14T06:34:03.502Z",
+      "createdAt": "2026-01-14T06:34:03.566Z"
+    },
+    {
+      "id": 1768372683142,
+      "title": "Auto-Recovery Script - Full Installation Guide",
+      "content": "# 🛡️ Auto-Recovery Script for Oracle VM\n\n## Быстрый фикс (запусти по SSH)\n\n```bash\n# 1. Диагностика\necho \"=== CHECKING SERVICES ===\"\nsystemctl status grok-admin-api --no-pager | head -20\necho \"\"\necho \"=== RECENT LOGS ===\"\njournalctl -u grok-admin-api -n 20 --no-pager\n\n# 2. Перезапуск\necho \"\"\necho \"=== RESTARTING ===\"\nsudo systemctl restart grok-admin-api\nsleep 3\n\n# 3. Проверка\ncurl -s http://localhost:5001/health && echo \" ✅ API OK\" || echo \" ❌ API FAILED\"\n```\n\n---\n\n## Полный скрипт автовосстановления\n\nСохрани как `/home/ubuntu/auto-recovery.sh`:\n\n```bash\n#!/bin/bash\n# Auto-Recovery Script for Oracle VM Services\n# Использование: ./auto-recovery.sh [check|fix|install]\n\nLOG=\"/home/ubuntu/logs/recovery.log\"\nSERVICES=\"grok-admin-api grok-portal grok-voice grok-transcriber\"\n\nlog() {\n    echo \"[$(date '+%Y-%m-%d %H:%M:%S')] $1\" | tee -a \"$LOG\"\n}\n\ncheck_service() {\n    local svc=$1\n    if systemctl is-active --quiet \"$svc\"; then\n        echo \"🟢 $svc\"\n        return 0\n    else\n        echo \"🔴 $svc\"\n        return 1\n    fi\n}\n\ncheck_port() {\n    local port=$1\n    local name=$2\n    if nc -z localhost \"$port\" 2>/dev/null; then\n        echo \"🟢 Port $port ($name)\"\n        return 0\n    else\n        echo \"🔴 Port $port ($name)\"\n        return 1\n    fi\n}\n\ncheck_all() {\n    echo \"=== SERVICE STATUS ===\"\n    for svc in $SERVICES; do\n        check_service \"$svc\"\n    done\n    \n    echo \"\"\n    echo \"=== PORT STATUS ===\"\n    check_port 5001 \"Admin API\"\n    check_port 5000 \"Transcriber\"\n    check_port 3335 \"Portal\"\n    check_port 3336 \"Voice\"\n    \n    echo \"\"\n    echo \"=== MEMORY ===\"\n    free -h | grep Mem\n    \n    echo \"\"\n    echo \"=== DISK ===\"\n    df -h / | tail -1\n}\n\nfix_service() {\n    local svc=$1\n    log \"Fixing $svc...\"\n    \n    # Попробовать просто рестарт\n    sudo systemctl restart \"$svc\"\n    sleep 3\n    \n    if systemctl is-active --quiet \"$svc\"; then\n        log \"✅ $svc fixed with restart\"\n        return 0\n    fi\n    \n    # Если не помогло - посмотреть логи\n    log \"❌ $svc still down, checking logs...\"\n    journalctl -u \"$svc\" -n 10 --no-pager >> \"$LOG\"\n    \n    return 1\n}\n\nfix_all() {\n    log \"=== AUTO-FIX STARTED ===\"\n    \n    local fixed=0\n    local failed=0\n    \n    for svc in $SERVICES; do\n        if ! systemctl is-active --quiet \"$svc\"; then\n            if fix_service \"$svc\"; then\n                ((fixed++))\n            else\n                ((failed++))\n            fi\n        fi\n    done\n    \n    log \"Fixed: $fixed, Failed: $failed\"\n    \n    # Финальная проверка\n    echo \"\"\n    check_all\n}\n\ninstall_watchdog() {\n    echo \"Installing watchdog cron...\"\n    \n    # Создать скрипт проверки\n    cat > /home/ubuntu/watchdog.sh << 'EOF'\n#!/bin/bash\n# Watchdog - проверка каждые 5 минут\n\ncheck_and_restart() {\n    local svc=$1\n    local port=$2\n    \n    if ! nc -z localhost \"$port\" 2>/dev/null; then\n        echo \"[$(date)] $svc down, restarting...\" >> /home/ubuntu/logs/watchdog.log\n        sudo systemctl restart \"$svc\"\n    fi\n}\n\ncheck_and_restart grok-admin-api 5001\ncheck_and_restart grok-portal 3335\ncheck_and_restart grok-transcriber 5000\nEOF\n    \n    chmod +x /home/ubuntu/watchdog.sh\n    \n    # Добавить в cron\n    (crontab -l 2>/dev/null | grep -v watchdog; echo \"*/5 * * * * /home/ubuntu/watchdog.sh\") | crontab -\n    \n    echo \"✅ Watchdog installed! Runs every 5 minutes.\"\n    crontab -l | grep watchdog\n}\n\ninstall_systemd_hardening() {\n    echo \"Hardening systemd services...\"\n    \n    for svc in $SERVICES; do\n        local service_file=\"/etc/systemd/system/${svc}.service\"\n        \n        if [ -f \"$service_file\" ]; then\n            # Проверить есть ли уже Restart=always\n            if ! grep -q \"Restart=always\" \"$service_file\"; then\n                echo \"Adding auto-restart to $svc...\"\n                \n                # Создать override\n                sudo mkdir -p \"/etc/systemd/system/${svc}.service.d\"\n                sudo tee \"/etc/systemd/system/${svc}.service.d/restart.conf\" > /dev/null << EOF\n[Service]\nRestart=always\nRestartSec=5\nWatchdogSec=300\nEOF\n                echo \"✅ $svc hardened\"\n            else\n                echo \"✓ $svc already has auto-restart\"\n            fi\n        fi\n    done\n    \n    sudo systemctl daemon-reload\n    echo \"\"\n    echo \"✅ All services hardened!\"\n}\n\n# Main\ncase \"${1:-check}\" in\n    check)\n        check_all\n        ;;\n    fix)\n        fix_all\n        ;;\n    install)\n        install_watchdog\n        install_systemd_hardening\n        ;;\n    watchdog)\n        install_watchdog\n        ;;\n    harden)\n        install_systemd_hardening\n        ;;\n    *)\n        echo \"Usage: $0 [check|fix|install|watchdog|harden]\"\n        echo \"\"\n        echo \"  check    - Show status of all services\"\n        echo \"  fix      - Restart failed services\"\n        echo \"  install  - Install watchdog + harden services\"\n        echo \"  watchdog - Install only watchdog cron\"\n        echo \"  harden   - Add auto-restart to systemd\"\n        ;;\nesac\n```\n\n---\n\n## Установка\n\n```bash\n# 1. Скопируй скрипт\nnano /home/ubuntu/auto-recovery.sh\n# (вставь код выше)\n\n# 2. Сделай исполняемым\nchmod +x /home/ubuntu/auto-recovery.sh\n\n# 3. Проверь статус\n./auto-recovery.sh check\n\n# 4. Почини упавшие\n./auto-recovery.sh fix\n\n# 5. Установи автовосстановление\n./auto-recovery.sh install\n```\n\n---\n\n## Что делает install\n\n1. **Watchdog cron** - каждые 5 минут проверяет порты, рестартит упавшие\n2. **Systemd hardening** - добавляет `Restart=always` ко всем сервисам\n\n---\n\n## Быстрые команды\n\n```bash\n# Проверить всё\n./auto-recovery.sh check\n\n# Починить всё\n./auto-recovery.sh fix\n\n# Логи watchdog\ntail -f /home/ubuntu/logs/watchdog.log\n\n# Логи recovery\ntail -f /home/ubuntu/logs/recovery.log\n```\n\n---\n\n## Ручной рестарт отдельного сервиса\n\n```bash\nsudo systemctl restart grok-admin-api\nsudo systemctl restart grok-portal\nsudo systemctl restart grok-transcriber\nsudo systemctl restart grok-voice\n```",
+      "tags": [],
+      "date": "2026-01-14T06:38:03.124Z",
+      "createdAt": "2026-01-14T06:38:03.142Z"
+    },
+    {
+      "id": 1768378107676,
+      "title": "FIX VM-SERVER COMMANDS",
+      "content": "cp /home/ubuntu/stable_server_backup.py /home/ubuntu/stable_server.py\n\nls -la /home/ubuntu/stable_server.py\n\nsudo systemctl restart vm-server\n\nsudo systemctl status vm-server\n\ncurl -s http://localhost:5001/health",
+      "tags": [],
+      "date": "2026-01-14T08:08:27.594Z",
+      "createdAt": "2026-01-14T08:08:27.676Z"
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "title": "GitHub: Получить Personal Access Token",
+      "priority": "high",
+      "due": "2025-01-13",
+      "done": true
+    },
+    {
+      "id": 2,
+      "title": "GitHub: Добавить GITHUB_TOKEN в Oracle VM",
+      "priority": "high",
+      "due": "2025-01-14",
+      "done": true
+    },
+    {
+      "id": 3,
+      "title": "Обновить MCP-Hub: добавить MCP протокол",
+      "priority": "high",
+      "due": "2025-01-15",
+      "done": true
+    },
+    {
+      "id": 4,
+      "title": "Тест MCP-Hub с телефона через Claude.ai",
+      "priority": "medium",
+      "due": "2025-01-16",
+      "done": true
+    },
+    {
+      "id": 5,
+      "title": "Настроить HTTPS для Oracle VM",
+      "priority": "low",
+      "due": "2025-01-20",
+      "done": true
+    },
+    {
+      "id": 1768261055213,
+      "title": "Транскрибер видео TikTok/YouTube через MCP",
+      "priority": "high",
+      "done": true,
+      "createdAt": "2026-01-12T23:37:35.213Z"
+    },
+    {
+      "id": 1768261364248,
+      "title": "Бэкап MCP-Hub кода с Oracle на GitHub + настроить git pull для деплоя",
+      "priority": "high",
+      "done": true,
+      "createdAt": "2026-01-12T23:42:44.248Z"
+    },
+    {
+      "id": 1768261541179,
+      "title": "Добавить в MCP-Hub файловые tools: list_files, read_file, write_file для доступа к структуре Oracle VM",
+      "priority": "high",
+      "done": true,
+      "createdAt": "2026-01-12T23:45:41.179Z"
+    },
+    {
+      "id": 1768261545261,
+      "title": "Загрузить код MCP-Hub и сервисов с Oracle VM на GitHub для бэкапа",
+      "priority": "high",
+      "done": true,
+      "createdAt": "2026-01-12T23:45:45.261Z"
+    },
+    {
+      "id": 1768261631682,
+      "title": "Добавить аварийные tools: upload_file, restart_service, run_command для дистанционного управления Oracle VM",
+      "priority": "high",
+      "done": true,
+      "createdAt": "2026-01-12T23:47:11.682Z"
+    },
+    {
+      "id": 1768280803213,
+      "title": "Бэкап MCP-Hub кода с Oracle на GitHub + настроить git pull для деплоя",
+      "priority": "high",
+      "done": false,
+      "createdAt": "2026-01-13T05:06:43.213Z"
+    },
+    {
+      "id": 1768280806909,
+      "title": "Добавить файловые tools: list_files, read_file, write_file для Oracle VM",
+      "priority": "high",
+      "done": false,
+      "createdAt": "2026-01-13T05:06:46.909Z"
+    },
+    {
+      "id": 1768280810558,
+      "title": "Добавить аварийные tools: upload_file, restart_service, run_command",
+      "priority": "high",
+      "done": false,
+      "createdAt": "2026-01-13T05:06:50.558Z"
+    },
+    {
+      "id": 1768280814334,
+      "title": "Загрузить код MCP-Hub и сервисов на GitHub для бэкапа",
+      "priority": "high",
+      "done": false,
+      "createdAt": "2026-01-13T05:06:54.334Z"
+    },
+    {
+      "id": 1768308053907,
+      "title": "Автодеплой сайтов: настроить MCP tool для загрузки HTML на Oracle VM без ручного вмешательства",
+      "priority": "high",
+      "done": false,
+      "createdAt": "2026-01-13T12:40:53.907Z"
+    },
+    {
+      "id": 1768308214410,
+      "title": "GitHub Pages автодеплой: изучить GitHub API для автоматического включения Pages без браузера",
+      "priority": "medium",
+      "done": false,
+      "createdAt": "2026-01-13T12:43:34.410Z"
+    },
+    {
+      "id": 1768319053105,
+      "title": "MCP-Hub: добавить tools для автодеплоя (deploy_html, check_site, get_logs) — полный цикл без участия человека",
+      "priority": "high",
+      "done": false,
+      "createdAt": "2026-01-13T15:44:13.105Z"
+    },
+    {
+      "id": 1768343805909,
+      "title": "Не запускать ресурсоёмкие задачи через Claude Cloud - использовать локальные ресурсы/VM",
+      "priority": "high",
+      "done": false,
+      "createdAt": "2026-01-13T22:36:45.909Z"
+    },
+    {
+      "id": 1768344255612,
+      "title": "Освоить Google Colab для автоматизации ресурсоёмких задач (GPU/TPU)",
+      "priority": "high",
+      "done": false,
+      "createdAt": "2026-01-13T22:44:15.612Z"
+    },
+    {
+      "id": 1768344352573,
+      "title": "Colab: видеомонтаж, склейка видео, создание видео из фото (FFmpeg, MoviePy)",
+      "priority": "medium",
+      "done": false,
+      "createdAt": "2026-01-13T22:45:52.573Z"
+    },
+    {
+      "id": 1768344358860,
+      "title": "Colab: AI-генерация изображений (Stable Diffusion, FLUX) + AI-агенты",
+      "priority": "medium",
+      "done": false,
+      "createdAt": "2026-01-13T22:45:58.860Z"
+    }
+  ],
+  "projects": {
+    "ai-catalog-mcp": {
+      "name": "AI Catalog MCP",
+      "github": "https://github.com/tikserziku/ai-catalog-mcp",
+      "renderUrl": "https://product-university-catalog2.onrender.com"
+    },
+    "mcp-hub": {
+      "name": "MCP Hub",
+      "github": "https://github.com/tikserziku/mcp-hub",
+      "renderUrl": "https://mcp-hub.onrender.com"
+    }
+  },
+  "meta": {
+    "version": "2.0",
+    "backend": "oracle-vm",
+    "synced": "2025-12-15"
+  }
+}

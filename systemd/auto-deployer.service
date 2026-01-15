@@ -1,0 +1,8 @@
+[Unit]
+Description=Auto Deploy Changes to GitHub
+
+[Service]
+Type=oneshot
+User=ubuntu
+WorkingDirectory=/home/ubuntu/auto-deployer
+ExecStart=/home/ubuntu/auto-deployer/auto_commit.sh

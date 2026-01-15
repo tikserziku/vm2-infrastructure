@@ -1,0 +1,294 @@
+<!-- Universal Admin Panel -->
+<div id="admin-control" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
+    <!-- FAB Button -->
+    <button id="admin-fab" style="
+        width: 56px; 
+        height: 56px; 
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none;
+        border-radius: 50%; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        color: white;
+        font-size: 24px;">
+        <i class="bi bi-gear-fill"></i>
+    </button>
+    
+    <!-- Admin Menu -->
+    <div id="admin-menu" style="
+        position: absolute;
+        bottom: 70px;
+        right: 0;
+        background: white;
+        border-radius: 12px;
+        padding: 15px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        display: none;
+        min-width: 220px;">
+        
+        <div style="text-align: center; margin-bottom: 10px;">
+            <small style="color: #666;">Панель управления</small>
+            <div id="service-badge" class="badge bg-success" style="display: block; margin-top: 5px;">Online</div>
+        </div>
+        
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+            <button id="btn-restart" class="btn btn-warning btn-sm" style="width: 100%;">
+                <i class="bi bi-arrow-clockwise"></i> Перезагрузить
+            </button>
+            
+            <button id="btn-status" class="btn btn-info btn-sm" style="width: 100%;">
+                <i class="bi bi-info-circle"></i> Статус
+            </button>
+            
+            <button id="btn-clear" class="btn btn-secondary btn-sm" style="width: 100%;">
+                <i class="bi bi-trash"></i> Очистить кэш
+            </button>
+        </div>
+        
+        <div id="admin-msg" style="margin-top: 10px; display: none;">
+            <div class="alert alert-sm p-2 mb-0" style="font-size: 12px;"></div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Admin Panel Styles */
+#admin-fab:hover {
+    transform: scale(1.1);
+}
+
+#admin-fab:active {
+    transform: scale(0.95);
+}
+
+#admin-menu.show {
+    display: block !important;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile specific */
+@media (max-width: 768px) {
+    #admin-control {
+        bottom: 15px !important;
+        right: 15px !important;
+    }
+    
+    #admin-menu {
+        right: 0 !important;
+        left: auto !important;
+        max-width: calc(100vw - 30px);
+        width: 250px;
+    }
+    
+    .btn-sm {
+        padding: 10px !important;
+        font-size: 14px !important;
+    }
+}
+
+/* Rotate animation */
+.rotating {
+    animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+</style>
+
+<script>
+// Admin Panel JavaScript
+(function() {
+    let menuOpen = false;
+    let isProcessing = false;
+    
+    // Wait for DOM to load
+    document.addEventListener('DOMContentLoaded', function() {
+        const fab = document.getElementById('admin-fab');
+        const menu = document.getElementById('admin-menu');
+        const btnRestart = document.getElementById('btn-restart');
+        const btnStatus = document.getElementById('btn-status');
+        const btnClear = document.getElementById('btn-clear');
+        
+        // Toggle menu on FAB click
+        if (fab) {
+            fab.addEventListener('click', function(e) {
+                e.stopPropagation();
+                menuOpen = !menuOpen;
+                
+                if (menuOpen) {
+                    menu.classList.add('show');
+                    checkServiceStatus();
+                } else {
+                    menu.classList.remove('show');
+                }
+            });
+        }
+        
+        // Restart button
+        if (btnRestart) {
+            btnRestart.addEventListener('click', async function(e) {
+                e.stopPropagation();
+                
+                if (isProcessing) return;
+                
+                if (!confirm('Перезагрузить сервис TikTok Transcriber?')) {
+                    return;
+                }
+                
+                isProcessing = true;
+                showMessage('Перезагрузка...', 'warning');
+                
+                // Add rotating animation to gear icon
+                const icon = fab.querySelector('i');
+                icon.classList.add('rotating');
+                
+                try {
+                    const response = await fetch('/admin/restart', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+                    
+                    // Even if response fails, service might restart
+                    showMessage('✅ Перезагружено!', 'success');
+                    
+                    setTimeout(() => {
+                        location.reload();
+                    }, 2000);
+                    
+                } catch (error) {
+                    // Service probably restarted, which breaks connection
+                    showMessage('✅ Перезагрузка...', 'success');
+                    setTimeout(() => {
+                        location.reload();
+                    }, 2000);
+                } finally {
+                    isProcessing = false;
+                    icon.classList.remove('rotating');
+                }
+            });
+        }
+        
+        // Status button
+        if (btnStatus) {
+            btnStatus.addEventListener('click', function(e) {
+                e.stopPropagation();
+                checkServiceStatus();
+            });
+        }
+        
+        // Clear cache button
+        if (btnClear) {
+            btnClear.addEventListener('click', function(e) {
+                e.stopPropagation();
+                clearBrowserCache();
+            });
+        }
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (menuOpen && !menu.contains(e.target) && e.target !== fab) {
+                menu.classList.remove('show');
+                menuOpen = false;
+            }
+        });
+        
+        // Prevent menu close when clicking inside menu
+        if (menu) {
+            menu.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
+    });
+    
+    // Check service status
+    async function checkServiceStatus() {
+        try {
+            const response = await fetch('/admin/status');
+            
+            if (response.ok) {
+                const data = await response.json();
+                const badge = document.getElementById('service-badge');
+                
+                if (data.status === 'success') {
+                    badge.className = 'badge bg-success';
+                    badge.textContent = 'Online';
+                    showMessage('✅ Сервис работает', 'success');
+                } else {
+                    badge.className = 'badge bg-danger';
+                    badge.textContent = 'Offline';
+                }
+            }
+        } catch (error) {
+            const badge = document.getElementById('service-badge');
+            badge.className = 'badge bg-warning';
+            badge.textContent = 'Unknown';
+            showMessage('⚠️ Не удалось проверить статус', 'warning');
+        }
+    }
+    
+    // Clear browser cache
+    function clearBrowserCache() {
+        // Clear caches
+        if ('caches' in window) {
+            caches.keys().then(names => {
+                names.forEach(name => caches.delete(name));
+            });
+        }
+        
+        // Clear storage
+        try {
+            localStorage.clear();
+            sessionStorage.clear();
+        } catch(e) {
+            console.log('Storage clear error:', e);
+        }
+        
+        showMessage('✅ Кэш очищен!', 'success');
+        
+        setTimeout(() => {
+            location.reload(true);
+        }, 1500);
+    }
+    
+    // Show message
+    function showMessage(text, type) {
+        const msgDiv = document.getElementById('admin-msg');
+        if (!msgDiv) return;
+        
+        const alertDiv = msgDiv.querySelector('.alert');
+        if (!alertDiv) return;
+        
+        alertDiv.className = `alert alert-${type} alert-sm p-2 mb-0`;
+        alertDiv.textContent = text;
+        alertDiv.style.fontSize = '12px';
+        msgDiv.style.display = 'block';
+        
+        setTimeout(() => {
+            msgDiv.style.display = 'none';
+        }, 3000);
+    }
+    
+    // Auto-check status on load
+    setTimeout(checkServiceStatus, 2000);
+})();
+</script>
+

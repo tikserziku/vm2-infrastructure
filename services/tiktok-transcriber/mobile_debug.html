@@ -1,0 +1,67 @@
+<!-- Mobile Debug Version -->
+<script>
+// Add touch event support for mobile
+document.addEventListener('DOMContentLoaded', function() {
+    const fab = document.getElementById('admin-fab');
+    const menu = document.getElementById('admin-menu');
+    
+    if (!fab || !menu) {
+        console.error('Admin elements not found!');
+        return;
+    }
+    
+    // Debug info
+    console.log('Admin panel initialized');
+    
+    // Add both click and touch events
+    fab.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Touch detected');
+        toggleAdminMenu();
+    }, {passive: false});
+    
+    fab.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Click detected');
+        toggleAdminMenu();
+    });
+    
+    let menuOpen = false;
+    
+    function toggleAdminMenu() {
+        menuOpen = !menuOpen;
+        console.log('Menu state:', menuOpen);
+        
+        if (menuOpen) {
+            menu.style.display = 'block';
+            menu.classList.add('show');
+            // Add visual feedback
+            fab.style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                fab.style.transform = 'scale(1)';
+            }, 100);
+        } else {
+            menu.style.display = 'none';
+            menu.classList.remove('show');
+        }
+    }
+    
+    // Add visual feedback on touch
+    fab.addEventListener('touchstart', function() {
+        this.style.transform = 'scale(0.9)';
+    });
+    
+    fab.addEventListener('touchend', function() {
+        this.style.transform = 'scale(1)';
+    });
+    
+    // Test alert on mobile
+    window.testAdmin = function() {
+        alert('Admin panel is working!');
+        toggleAdminMenu();
+    };
+});
+</script>
+

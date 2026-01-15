@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Транскрибер Видео - Gemini 2.5 Flash</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 900px;
+            width: 100%;
+            padding: 40px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .gemini-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 1em;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .button-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+
+        .status.info {
+            background: #e3f2fd;
+            color: #1976d2;
+            display: block;
+        }
+
+        .status.success {
+            background: #e8f5e9;
+            color: #2e7d32;
+            display: block;
+        }
+
+        .status.error {
+            background: #ffebee;
+            color: #c62828;
+            display: block;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .result {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .result.active {
+            display: block;
+        }
+
+        .result-section {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .result-section h3 {
+            color: #333;
+            font-size: 1.3em;
+            margin: 0;
+        }
+
+        .copy-text-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 600;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .copy-text-btn:hover {
+            background: #5568d3;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .copy-text-btn:active {
+            transform: translateY(0);
+        }
+
+        .result-content {
+            color: #555;
+            line-height: 1.8;
+            white-space: pre-wrap;
+            font-size: 1em;
+        }
+
+        .download-section {
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+            background: #e8f5e9;
+            border-radius: 10px;
+        }
+
+        .download-btn {
+            background: #4caf50;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            transition: all 0.2s;
+        }
+
+        .download-btn:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        /* Стили для секции проверки фактов */
+        .fact-check-section {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border-radius: 10px;
+            border-left: 4px solid #ff9800;
+        }
+
+        .fact-check-section.active {
+            display: block;
+        }
+
+        .fact-check-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .fact-check-section h3 {
+            color: #e65100;
+            font-size: 1.3em;
+            margin: 0;
+        }
+
+        .btn-fact-check {
+            background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-fact-check:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+        }
+
+        .btn-fact-check:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Стили для генерации инфографики */
+        .infographic-section {
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border-radius: 15px;
+            border: 2px solid #81c784;
+        }
+
+        .infographic-section h3 {
+            color: #2e7d32;
+            font-size: 1.3em;
+            margin: 0 0 15px 0;
+        }
+
+        .btn-infographic {
+            background: linear-gradient(135deg, #4caf50 0%, #388e3c 100%);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .btn-infographic:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+
+        .btn-infographic:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .infographic-textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #81c784;
+            border-radius: 10px;
+            font-size: 1em;
+            min-height: 100px;
+            resize: vertical;
+            font-family: inherit;
+        }
+
+        .infographic-textarea:focus {
+            outline: none;
+            border-color: #4caf50;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+        }
+
+        .infographic-result {
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        .infographic-result img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-download-image {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-download-image:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.4);
+        }
+
+        .perplexity-key-input {
+            margin-bottom: 15px;
+        }
+
+        .perplexity-key-input label {
+            color: #e65100;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .perplexity-key-input input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ffcc80;
+            border-radius: 8px;
+            font-size: 0.95em;
+        }
+
+        .perplexity-key-input input:focus {
+            outline: none;
+            border-color: #ff9800;
+        }
+
+        .fact-check-result {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border: 2px solid #ffcc80;
+        }
+
+        .fact-check-result.active {
+            display: block;
+        }
+
+        .verdict-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.95em;
+            margin-bottom: 15px;
+        }
+
+        .verdict-mostly-true {
+            background: #c8e6c9;
+            color: #2e7d32;
+        }
+
+        .verdict-mostly-false {
+            background: #ffcdd2;
+            color: #c62828;
+        }
+
+        .verdict-mixed {
+            background: #fff9c4;
+            color: #f57f17;
+        }
+
+        .verdict-uncertain {
+            background: #e0e0e0;
+            color: #616161;
+        }
+
+        .verdict-summary {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .verdict-item {
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .verdict-true { background: #c8e6c9; color: #2e7d32; }
+        .verdict-false { background: #ffcdd2; color: #c62828; }
+        .verdict-partial { background: #fff9c4; color: #f57f17; }
+        .verdict-unverifiable { background: #e0e0e0; color: #616161; }
+
+        .fact-check-content {
+            white-space: pre-wrap;
+            line-height: 1.8;
+            color: #333;
+            font-size: 0.95em;
+        }
+
+        .fact-check-citations {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #ffcc80;
+        }
+
+        .fact-check-citations h4 {
+            color: #e65100;
+            margin-bottom: 10px;
+        }
+
+        .fact-check-citations a {
+            display: block;
+            color: #1976d2;
+            text-decoration: none;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+
+        .fact-check-citations a:hover {
+            text-decoration: underline;
+        }
+
+        .info-box {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .info-box h4 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            color: #856404;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .info-box a {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .logs-section {
+            margin-top: 30px;
+            display: none;
+        }
+
+        .logs-section.active {
+            display: block;
+        }
+
+        .logs-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .logs-header h3 {
+            color: #333;
+            font-size: 1.2em;
+            margin: 0;
+        }
+
+        .copy-logs-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .copy-logs-btn:hover {
+            background: #5568d3;
+        }
+
+        .logs-textarea {
+            width: 100%;
+            height: 300px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.85em;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            background: #f8f9fa;
+            color: #333;
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+        .logs-textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .button-group {
+                grid-template-columns: 1fr;
+            }
+
+            .logs-textarea {
+                height: 200px;
+                font-size: 0.75em;
+            }
+
+            .result-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .copy-text-btn {
+                width: 100%;
+                padding: 10px 20px;
+            }
+
+            .logs-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .copy-logs-btn {
+                width: 100%;
+                padding: 10px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎬 Транскрибер Видео</h1>
+            <p>YouTube, TikTok, Facebook и другие платформы</p>
+            <span class="gemini-badge">🤖 Powered by Gemini 2.5 Flash ⚡</span>
+        </div>
+
+        <div class="info-box">
+            <h4>📝 Как получить API ключ Gemini:</h4>
+            <p>
+                1. Перейдите на <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a><br>
+                2. Войдите в свой Google аккаунт<br>
+                3. Нажмите "Get API Key" или "Create API Key"<br>
+                4. Скопируйте ключ и вставьте в поле ниже<br>
+                <strong>⚡ Бесплатный лимит Gemini 2.5 Flash:</strong> 1000 запросов в день! 🎉
+            </p>
+        </div>
+
+        <form id="mainForm">
+            <div class="form-group">
+                <label for="videoUrl">🔗 Ссылка на видео:</label>
+                <input
+                    type="text"
+                    id="videoUrl"
+                    name="videoUrl"
+                    placeholder="https://www.youtube.com/watch?v=..."
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="apiKey">🔑 API ключ Gemini (для транскрибации):</label>
+                <input
+                    type="password"
+                    id="apiKey"
+                    name="apiKey"
+                    placeholder="AIza... (необязательно, если только скачиваете аудио)"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="language">🌍 Язык транскрибации:</label>
+                <select id="language" name="language">
+                    <option value="ru">🇷🇺 Русский</option>
+                    <option value="en">🇺🇸 English</option>
+                    <option value="auto">🌐 Автоопределение</option>
+                </select>
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="btn btn-primary" id="transcribeBtn">
+                    🚀 Транскрибация + Аудио
+                </button>
+                <button type="button" class="btn btn-secondary" id="audioOnlyBtn">
+                    🎵 Только скачать аудио
+                </button>
+            </div>
+        </form>
+
+        <div id="status" class="status"></div>
+
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <p style="margin-top: 15px; color: #667eea; font-weight: 600;" id="loadingText">Обрабатываем видео...</p>
+        </div>
+
+        <div id="result" class="result">
+            <div class="result-section">
+                <div class="result-header">
+                    <h3>📝 Транскрибация:</h3>
+                    <button class="copy-text-btn" id="copyTranscriptBtn">📋 Копировать</button>
+                </div>
+                <div id="transcript" class="result-content"></div>
+            </div>
+
+            <div class="result-section">
+                <div class="result-header">
+                    <h3>📊 Краткое саммари:</h3>
+                    <button class="copy-text-btn" id="copySummaryBtn">📋 Копировать</button>
+                </div>
+                <div id="summary" class="result-content"></div>
+            </div>
+        </div>
+
+        <div id="downloadSection" class="download-section" style="display:none;">
+            <h3>🎵 Аудио готово!</h3>
+            <p style="margin: 10px 0; color: #555;">Нажмите кнопку ниже, чтобы скачать извлеченное аудио</p>
+            <a id="downloadBtn" href="#" class="download-btn" download="audio.mp3" target="_blank">
+                ⬇️ Скачать аудио MP3
+            </a>
+        </div>
+
+        <!-- Секция проверки фактов -->
+        <div id="factCheckSection" class="fact-check-section">
+            <div class="fact-check-header">
+                <h3>🔍 Проверка фактов (Perplexity AI)</h3>
+            </div>
+
+            <div class="perplexity-key-input">
+                <label for="perplexityKey">🔑 API ключ Perplexity:</label>
+                <input
+                    type="password"
+                    id="perplexityKey"
+                    placeholder="pplx-... (получите на perplexity.ai)"
+                >
+                <small style="color: #bf360c; display: block; margin-top: 5px;">
+                    Получите ключ на <a href="https://www.perplexity.ai/settings/api" target="_blank" style="color: #e65100;">perplexity.ai/settings/api</a>
+                </small>
+            </div>
+
+            <button id="factCheckBtn" class="btn-fact-check">
+                🔍 Проверить факты в транскрипции
+            </button>
+
+            <div id="factCheckLoading" class="loading" style="margin-top: 20px;">
+                <div class="spinner" style="border-top-color: #ff9800;"></div>
+                <p style="margin-top: 15px; color: #e65100; font-weight: 600;">Проверяем факты через интернет...</p>
+            </div>
+
+            <div id="factCheckResult" class="fact-check-result">
+                <div id="overallVerdict"></div>
+                <div id="verdictSummary" class="verdict-summary"></div>
+                <div class="result-header" style="margin-bottom: 15px;">
+                    <h4 style="margin: 0; color: #e65100;">Подробный анализ:</h4>
+                    <button class="copy-text-btn" id="copyFactCheckBtn" style="background: #ff9800;">📋 Копировать</button>
+                </div>
+                <div id="factCheckContent" class="fact-check-content"></div>
+                <div id="factCheckCitations" class="fact-check-citations" style="display: none;">
+                    <h4>📚 Источники:</h4>
+                    <div id="citationsList"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Секция генерации инфографики -->
+        <div id="infographicSection" class="infographic-section">
+            <h3>🎨 Генерация инфографики (Gemini AI)</h3>
+            <p style="color: #2e7d32; margin-bottom: 15px;">Опишите что должно быть на инфографике — AI создаст картинку</p>
+
+            <textarea
+                id="infographicDescription"
+                class="infographic-textarea"
+                placeholder="Например: Инфографика о 5 способах экономии денег. Минималистичный стиль, иконки, нумерованный список..."
+            ></textarea>
+
+            <button id="generateInfographicBtn" class="btn-infographic">
+                🎨 Создать инфографику
+            </button>
+
+            <div id="infographicLoading" class="loading" style="margin-top: 20px; display: none;">
+                <div class="spinner" style="border-top-color: #4caf50;"></div>
+                <p style="margin-top: 15px; color: #2e7d32; font-weight: 600;">Генерируем инфографику...</p>
+            </div>
+
+            <div id="infographicResult" class="infographic-result">
+                <img id="infographicImage" src="" alt="Сгенерированная инфографика">
+                <br>
+                <a id="downloadInfographicBtn" class="btn-download-image" href="#" download="infographic.png">
+                    ⬇️ Скачать инфографику
+                </a>
+            </div>
+        </div>
+
+        <div id="logsSection" class="logs-section">
+            <div class="logs-header">
+                <h3>📋 Логи обработки</h3>
+                <button id="copyLogsBtn" class="copy-logs-btn">📋 Копировать логи</button>
+            </div>
+            <textarea id="logsTextarea" class="logs-textarea" readonly></textarea>
+        </div>
+    </div>
+
+    <script>
+        const videoUrlInput = document.getElementById('videoUrl');
+        const apiKeyInput = document.getElementById('apiKey');
+        const languageSelect = document.getElementById('language');
+        const transcribeBtn = document.getElementById('transcribeBtn');
+        const audioOnlyBtn = document.getElementById('audioOnlyBtn');
+        const statusDiv = document.getElementById('status');
+        const loadingDiv = document.getElementById('loading');
+        const loadingText = document.getElementById('loadingText');
+        const resultDiv = document.getElementById('result');
+        const transcriptDiv = document.getElementById('transcript');
+        const summaryDiv = document.getElementById('summary');
+        const downloadSection = document.getElementById('downloadSection');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const logsSection = document.getElementById('logsSection');
+        const logsTextarea = document.getElementById('logsTextarea');
+        const copyLogsBtn = document.getElementById('copyLogsBtn');
+        const copyTranscriptBtn = document.getElementById('copyTranscriptBtn');
+        const copySummaryBtn = document.getElementById('copySummaryBtn');
+
+        // Сохранение API ключа в localStorage
+        const savedApiKey = localStorage.getItem('gemini_api_key');
+        if (savedApiKey) {
+            apiKeyInput.value = savedApiKey;
+        }
+
+        apiKeyInput.addEventListener('change', function() {
+            localStorage.setItem('gemini_api_key', this.value);
+        });
+
+        // Функция для отображения логов
+        function showLogs(logs) {
+            if (logs && logs.length > 0) {
+                logsTextarea.value = logs.join('\n');
+                logsSection.classList.add('active');
+                // Прокручиваем к логам
+                setTimeout(() => {
+                    logsSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+            } else {
+                logsSection.classList.remove('active');
+            }
+        }
+
+        // Универсальная функция копирования для мобильных и десктопа
+        function copyToClipboard(text, button) {
+            // Пробуем современный Clipboard API
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showCopySuccess(button);
+                }).catch(() => {
+                    // Если не удалось - используем fallback
+                    fallbackCopyToClipboard(text, button);
+                });
+            } else {
+                // Старый метод для мобильных и HTTP
+                fallbackCopyToClipboard(text, button);
+            }
+        }
+
+        // Fallback метод копирования для мобильных устройств
+        function fallbackCopyToClipboard(text, button) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+
+            // Важные стили для работы на мобильных устройствах
+            textarea.style.position = 'fixed';
+            textarea.style.top = '0';
+            textarea.style.left = '0';
+            textarea.style.width = '2em';
+            textarea.style.height = '2em';
+            textarea.style.padding = '0';
+            textarea.style.border = 'none';
+            textarea.style.outline = 'none';
+            textarea.style.boxShadow = 'none';
+            textarea.style.background = 'transparent';
+            textarea.setAttribute('readonly', '');
+            textarea.style.fontSize = '12pt'; // Предотвращает zoom на iOS
+
+            document.body.appendChild(textarea);
+
+            // Специальная обработка для iOS
+            if (navigator.userAgent.match(/ipad|iphone/i)) {
+                const range = document.createRange();
+                range.selectNodeContents(textarea);
+                const selection = window.getSelection();
+                selection.removeAllRanges();
+                selection.addRange(range);
+                textarea.setSelectionRange(0, 999999);
+            } else {
+                textarea.focus();
+                textarea.select();
+            }
+
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    showCopySuccess(button);
+                }
+            } catch (err) {
+                console.error('Fallback copy failed:', err);
+            }
+
+            document.body.removeChild(textarea);
+        }
+
+        // Показываем успешное копирование
+        function showCopySuccess(button) {
+            const originalText = button.textContent;
+            button.textContent = '✅ Скопировано!';
+            setTimeout(() => {
+                button.textContent = originalText;
+            }, 2000);
+        }
+
+        // Кнопка копирования логов
+        copyLogsBtn.addEventListener('click', function() {
+            copyToClipboard(logsTextarea.value, copyLogsBtn);
+        });
+
+        // Кнопка копирования транскрипта
+        copyTranscriptBtn.addEventListener('click', function() {
+            copyToClipboard(transcriptDiv.textContent, copyTranscriptBtn);
+        });
+
+        // Кнопка копирования саммари
+        copySummaryBtn.addEventListener('click', function() {
+            copyToClipboard(summaryDiv.textContent, copySummaryBtn);
+        });
+
+        function showStatus(message, type) {
+            statusDiv.textContent = message;
+            statusDiv.className = 'status ' + type;
+        }
+
+        function hideStatus() {
+            statusDiv.style.display = 'none';
+        }
+
+        function showLoading(text) {
+            loadingText.textContent = text;
+            loadingDiv.classList.add('active');
+            transcribeBtn.disabled = true;
+            audioOnlyBtn.disabled = true;
+            resultDiv.classList.remove('active');
+            downloadSection.style.display = 'none';
+            logsSection.classList.remove('active');
+        }
+
+        function hideLoading() {
+            loadingDiv.classList.remove('active');
+            transcribeBtn.disabled = false;
+            audioOnlyBtn.disabled = false;
+        }
+
+        // Кнопка "Только скачать аудио"
+        audioOnlyBtn.addEventListener('click', async function() {
+            const videoUrl = videoUrlInput.value.trim();
+
+            if (!videoUrl) {
+                showStatus('❌ Введите ссылку на видео', 'error');
+                return;
+            }
+
+            hideStatus();
+            showLoading('📹 Загрузка видео и извлечение аудио...');
+
+            try {
+                const response = await fetch('/extract-audio-only', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        video_url: videoUrl
+                    })
+                });
+
+                const data = await response.json();
+
+                hideLoading();
+
+                // Показываем логи
+                if (data.logs) {
+                    showLogs(data.logs);
+                }
+
+                if (data.status === 'success') {
+                    showStatus('✅ Аудио извлечено успешно!', 'success');
+
+                    downloadBtn.href = '/download-audio/' + data.audio_id;
+                    downloadSection.style.display = 'block';
+
+                    // Прокручиваем к кнопке скачивания
+                    downloadSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                    showStatus('❌ ' + (data.message || 'Ошибка обработки'), 'error');
+                }
+            } catch (error) {
+                hideLoading();
+                showStatus('❌ Ошибка соединения с сервером: ' + error.message, 'error');
+                console.error('Error:', error);
+            }
+        });
+
+        // Кнопка "Транскрибация + Аудио"
+        transcribeBtn.addEventListener('click', async function() {
+            const videoUrl = videoUrlInput.value.trim();
+            const apiKey = apiKeyInput.value.trim();
+            const language = languageSelect.value;
+
+            if (!videoUrl) {
+                showStatus('❌ Введите ссылку на видео', 'error');
+                return;
+            }
+
+            if (!apiKey) {
+                showStatus('❌ Введите API ключ Gemini для транскрибации', 'error');
+                return;
+            }
+
+            // Сохраняем API ключ
+            localStorage.setItem('gemini_api_key', apiKey);
+
+            hideStatus();
+            showLoading('📹 Загрузка видео, извлечение аудио и транскрибация...');
+
+            try {
+                const response = await fetch('/process', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        video_url: videoUrl,
+                        api_key: apiKey,
+                        language: language
+                    })
+                });
+
+                const data = await response.json();
+
+                hideLoading();
+
+                // Показываем логи
+                if (data.logs) {
+                    showLogs(data.logs);
+                }
+
+                if (data.status === 'success') {
+                    showStatus('✅ Транскрибация завершена успешно!', 'success');
+
+                    transcriptDiv.textContent = data.transcript;
+                    summaryDiv.textContent = data.summary;
+                    downloadBtn.href = '/download-audio/' + data.audio_id;
+
+                    resultDiv.classList.add('active');
+                    downloadSection.style.display = 'block';
+
+                    // Показываем секцию проверки фактов
+                    factCheckSection.classList.add('active');
+
+                    // Прокручиваем к результатам
+                    resultDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else {
+                    showStatus('❌ ' + (data.message || 'Ошибка обработки'), 'error');
+                }
+            } catch (error) {
+                hideLoading();
+                showStatus('❌ Ошибка соединения с сервером: ' + error.message, 'error');
+                console.error('Error:', error);
+            }
+        });
+
+        // ============================================
+        // ПРОВЕРКА ФАКТОВ (Perplexity AI)
+        // ============================================
+
+        const factCheckSection = document.getElementById('factCheckSection');
+        const perplexityKeyInput = document.getElementById('perplexityKey');
+        const factCheckBtn = document.getElementById('factCheckBtn');
+        const factCheckLoading = document.getElementById('factCheckLoading');
+        const factCheckResult = document.getElementById('factCheckResult');
+        const overallVerdictDiv = document.getElementById('overallVerdict');
+        const verdictSummaryDiv = document.getElementById('verdictSummary');
+        const factCheckContentDiv = document.getElementById('factCheckContent');
+        const factCheckCitations = document.getElementById('factCheckCitations');
+        const citationsList = document.getElementById('citationsList');
+        const copyFactCheckBtn = document.getElementById('copyFactCheckBtn');
+
+        // Загружаем сохраненный ключ Perplexity
+        const savedPerplexityKey = localStorage.getItem('perplexity_api_key');
+        if (savedPerplexityKey) {
+            perplexityKeyInput.value = savedPerplexityKey;
+        }
+
+        perplexityKeyInput.addEventListener('change', function() {
+            localStorage.setItem('perplexity_api_key', this.value);
+        });
+
+        // Копирование результата проверки фактов
+        copyFactCheckBtn.addEventListener('click', function() {
+            copyToClipboard(factCheckContentDiv.textContent, copyFactCheckBtn);
+        });
+
+        // Показываем секцию проверки фактов когда есть транскрипция
+        function showFactCheckSection() {
+            factCheckSection.classList.add('active');
+        }
+
+        // Кнопка проверки фактов
+        factCheckBtn.addEventListener('click', async function() {
+            const transcript = transcriptDiv.textContent.trim();
+            const perplexityKey = perplexityKeyInput.value.trim();
+            const language = languageSelect.value;
+
+            if (!transcript) {
+                showStatus('❌ Сначала выполните транскрибацию видео', 'error');
+                return;
+            }
+
+            if (!perplexityKey) {
+                showStatus('❌ Введите API ключ Perplexity для проверки фактов', 'error');
+                return;
+            }
+
+            // Сохраняем ключ
+            localStorage.setItem('perplexity_api_key', perplexityKey);
+
+            // Показываем загрузку
+            factCheckBtn.disabled = true;
+            factCheckLoading.classList.add('active');
+            factCheckResult.classList.remove('active');
+
+            try {
+                const response = await fetch('/verify-facts', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        transcript: transcript,
+                        api_key: perplexityKey,
+                        language: language === 'auto' ? 'ru' : language
+                    })
+                });
+
+                const data = await response.json();
+
+                factCheckLoading.classList.remove('active');
+                factCheckBtn.disabled = false;
+
+                if (data.status === 'success') {
+                    displayFactCheckResult(data);
+                    showStatus('✅ Проверка фактов завершена!', 'success');
+                } else {
+                    showStatus('❌ ' + (data.message || 'Ошибка проверки фактов'), 'error');
+                }
+            } catch (error) {
+                factCheckLoading.classList.remove('active');
+                factCheckBtn.disabled = false;
+                showStatus('❌ Ошибка соединения: ' + error.message, 'error');
+                console.error('Fact check error:', error);
+            }
+        });
+
+        // Отображение результата проверки фактов
+        function displayFactCheckResult(data) {
+            factCheckResult.classList.add('active');
+
+            // Общий вердикт
+            const verdictClass = {
+                'mostly_true': 'verdict-mostly-true',
+                'mostly_false': 'verdict-mostly-false',
+                'mixed': 'verdict-mixed',
+                'uncertain': 'verdict-uncertain',
+                'no_facts': 'verdict-uncertain'
+            };
+
+            const verdictEmoji = {
+                'mostly_true': '✅',
+                'mostly_false': '❌',
+                'mixed': '⚠️',
+                'uncertain': '❓',
+                'no_facts': '📝'
+            };
+
+            const verdict = data.overall_verdict || 'uncertain';
+            const verdictText = data.overall_verdict_text || 'Требует проверки';
+
+            overallVerdictDiv.innerHTML = `
+                <span class="verdict-badge ${verdictClass[verdict] || 'verdict-uncertain'}">
+                    ${verdictEmoji[verdict] || '❓'} ${verdictText}
+                </span>
+            `;
+
+            // Сводка по вердиктам
+            const summary = data.verdict_summary || {};
+            verdictSummaryDiv.innerHTML = `
+                ${summary.true ? `<span class="verdict-item verdict-true">✅ Правда: ${summary.true}</span>` : ''}
+                ${summary.false ? `<span class="verdict-item verdict-false">❌ Ложь: ${summary.false}</span>` : ''}
+                ${summary.partial ? `<span class="verdict-item verdict-partial">⚠️ Частично: ${summary.partial}</span>` : ''}
+                ${summary.unverifiable ? `<span class="verdict-item verdict-unverifiable">❓ Не проверяемо: ${summary.unverifiable}</span>` : ''}
+            `;
+
+            // Полный текст анализа
+            factCheckContentDiv.textContent = data.raw_response || 'Нет данных';
+
+            // Источники
+            if (data.citations && data.citations.length > 0) {
+                factCheckCitations.style.display = 'block';
+                citationsList.innerHTML = data.citations.map((url, index) =>
+                    `<a href="${url}" target="_blank">${index + 1}. ${url}</a>`
+                ).join('');
+            } else {
+                factCheckCitations.style.display = 'none';
+            }
+
+            // Прокручиваем к результату
+            factCheckResult.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Модификация функции отображения результатов транскрибации
+        // чтобы показывать секцию проверки фактов
+        const originalDisplaySuccess = function() {
+            showFactCheckSection();
+        };
+
+        // Переопределяем обработчик успешной транскрибации
+        const originalTranscribeHandler = transcribeBtn.onclick;
+
+        // ============================================
+        // ГЕНЕРАЦИЯ ИНФОГРАФИКИ
+        // ============================================
+        const infographicDescription = document.getElementById('infographicDescription');
+        const generateInfographicBtn = document.getElementById('generateInfographicBtn');
+        const infographicLoading = document.getElementById('infographicLoading');
+        const infographicResult = document.getElementById('infographicResult');
+        const infographicImage = document.getElementById('infographicImage');
+        const downloadInfographicBtn = document.getElementById('downloadInfographicBtn');
+
+        generateInfographicBtn.addEventListener('click', async function() {
+            const description = infographicDescription.value.trim();
+            const apiKey = apiKeyInput.value.trim();
+
+            if (!description) {
+                showStatus('❌ Введите описание инфографики', 'error');
+                return;
+            }
+
+            if (!apiKey) {
+                showStatus('❌ Введите API ключ Gemini', 'error');
+                return;
+            }
+
+            // Показываем загрузку
+            generateInfographicBtn.disabled = true;
+            infographicLoading.style.display = 'block';
+            infographicResult.style.display = 'none';
+            hideStatus();
+
+            try {
+                const response = await fetch('/generate-infographic', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        description: description,
+                        api_key: apiKey
+                    })
+                });
+
+                const data = await response.json();
+
+                // Показываем логи
+                if (data.logs) {
+                    showLogs(data.logs);
+                }
+
+                if (data.status === 'success' && data.image_data) {
+                    // Показываем картинку
+                    const imageUrl = 'data:' + (data.mime_type || 'image/png') + ';base64,' + data.image_data;
+                    infographicImage.src = imageUrl;
+                    downloadInfographicBtn.href = imageUrl;
+                    infographicResult.style.display = 'block';
+
+                    showStatus('✅ Инфографика создана!', 'success');
+
+                    // Прокручиваем к результату
+                    infographicResult.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                    showStatus('❌ ' + (data.message || 'Ошибка генерации'), 'error');
+                }
+            } catch (error) {
+                showStatus('❌ Ошибка соединения: ' + error.message, 'error');
+                console.error('Infographic error:', error);
+            } finally {
+                generateInfographicBtn.disabled = false;
+                infographicLoading.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

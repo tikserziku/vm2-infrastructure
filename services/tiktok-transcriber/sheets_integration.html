@@ -1,0 +1,95 @@
+<!-- Google Sheets Integration Section -->
+<div class="col-12">
+    <div class="card border-0 shadow-sm">
+        <div class="card-body">
+            <h6 class="card-title mb-3">
+                <i class="bi bi-table"></i> Google Sheets
+            </h6>
+            
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="save-to-sheets" checked>
+                <label class="form-check-label" for="save-to-sheets">
+                    Сохранить в Google Таблицу
+                </label>
+            </div>
+            
+            <div id="sheets-options" class="row g-2">
+                <div class="col-md-8">
+                    <input type="text" 
+                           class="form-control form-control-sm" 
+                           id="spreadsheet-id" 
+                           placeholder="ID таблицы (опционально - создаст новую)">
+                    <small class="text-muted">Оставьте пустым для создания новой таблицы</small>
+                </div>
+                <div class="col-md-4">
+                    <button type="button" class="btn btn-sm btn-outline-primary w-100" onclick="checkSheetsConnection()">
+                        <i class="bi bi-link-45deg"></i> Проверить
+                    </button>
+                </div>
+            </div>
+            
+            <div id="sheets-status" class="mt-2" style="display: none;">
+                <small class="text-success"><i class="bi bi-check-circle"></i> Google Sheets подключен</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Google Sheets functionality
+document.getElementById('save-to-sheets').addEventListener('change', function() {
+    document.getElementById('sheets-options').style.display = this.checked ? 'flex' : 'none';
+});
+
+async function checkSheetsConnection() {
+    try {
+        const response = await fetch('${baseURL}/config');
+        const data = await response.json();
+        
+        const statusDiv = document.getElementById('sheets-status');
+        statusDiv.style.display = 'block';
+        
+        if (data.google_sheets_connected) {
+            statusDiv.innerHTML = '<small class="text-success"><i class="bi bi-check-circle"></i> Google Sheets подключен и готов к работе</small>';
+        } else {
+            statusDiv.innerHTML = '<small class="text-warning"><i class="bi bi-exclamation-circle"></i> Google Sheets не настроен на сервере</small>';
+        }
+    } catch (error) {
+        document.getElementById('sheets-status').innerHTML = '<small class="text-danger"><i class="bi bi-x-circle"></i> Ошибка проверки</small>';
+    }
+}
+
+// Modify the form submission to include Google Sheets options
+function getFormData() {
+    const formData = {
+        video_url: document.getElementById('video-url').value,
+        api_key: document.getElementById('api-key').value,
+        model: document.getElementById('model-select').value,
+        language: document.getElementById('language-select').value,
+        save_to_sheets: document.getElementById('save-to-sheets').checked,
+        spreadsheet_id: document.getElementById('spreadsheet-id').value
+    };
+    return formData;
+}
+
+// Update results display to show Google Sheets info
+function displayResultsWithSheets(data) {
+    // Original display results
+    displayResults(data);
+    
+    // Add Google Sheets info if available
+    if (data.google_sheets) {
+        const sheetsInfo = document.createElement('div');
+        sheetsInfo.className = 'alert alert-success mt-3';
+        sheetsInfo.innerHTML = `
+            <h6><i class="bi bi-table"></i> Сохранено в Google Sheets</h6>
+            <p class="mb-1">ID таблицы: <code>${data.google_sheets.spreadsheet_id}</code></p>
+            ${data.google_sheets.url ? `<a href="${data.google_sheets.url}" target="_blank" class="btn btn-sm btn-success">
+                <i class="bi bi-box-arrow-up-right"></i> Открыть таблицу
+            </a>` : ''}
+        `;
+        document.getElementById('result-container').appendChild(sheetsInfo);
+    }
+}
+</script>
+

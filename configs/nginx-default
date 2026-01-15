@@ -1,0 +1,73 @@
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name _;
+    
+    # Veo Video Studio
+    location /veo/ {
+        alias /var/www/veo/;
+        index index.html;
+    }
+    
+    # n8n
+    location /n8n/ {
+        proxy_pass http://localhost:5678/;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_read_timeout 86400;
+    }
+    
+    # MCP Hub Web UI + API
+    location /hub/ {
+        proxy_pass http://localhost:3456/;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+    
+    # MCP Hub Storage API (legacy)
+    location /storage/ {
+        proxy_pass http://localhost:3456/;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+    
+    # Frontend
+    location / {
+        root /var/www/html;
+        index index.html;
+        try_files $uri $uri/ =404;
+    }
+    
+    # Transcriber API
+    # Emilia Voice AI - Birthday Edition
+    location /emilia/ {
+        proxy_pass http://localhost:5565/;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_read_timeout 300;
+        proxy_buffering off;
+    }
+
+    location /api {
+        proxy_pass http://localhost:8001;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+        proxy_read_timeout 86400;
+    }
+    location /agi-agent/ {
+        proxy_pass http://127.0.0.1:3457/;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
