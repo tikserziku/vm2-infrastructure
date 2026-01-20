@@ -1,0 +1,17 @@
+[Unit]
+Description=VM Controller - Manage VM1 from VM2
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu
+ExecStart=/usr/bin/python3 /home/ubuntu/vm_controller.py
+Restart=always
+RestartSec=5
+Environment=VM_CONTROLLER_KEY=vm-controller-2026
+# Заполнить после получения OCID:
+# Environment=VM1_INSTANCE_OCID=ocid1.instance.oc1.xxx
+
+[Install]
+WantedBy=multi-user.target
